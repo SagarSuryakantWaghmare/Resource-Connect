@@ -1,11 +1,12 @@
+
 import './App.css'
 
 function App() {
-
+ ,
 
   return (
     <>
-      <h1>Hello this is frontend</h1>
+    <h1>Here we start the project for the frontend</h1>
     </>
   )
 }
