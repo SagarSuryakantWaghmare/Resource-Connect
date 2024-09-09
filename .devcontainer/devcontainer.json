@@ -13,7 +13,8 @@
                 "formulahendry.auto-rename-tag",
                 "xabikos.JavaScriptSnippets",
                 "mongodb.mongodb-vscode",
-                "rangav.vscode-thunder-client"
+                "rangav.vscode-thunder-client",
+                "bradlc.vscode-tailwindcss"  
             ]
         }
     }
