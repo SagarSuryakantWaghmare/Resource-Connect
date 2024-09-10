@@ -18,7 +18,7 @@ const UserSchema = new Schema({
         lowercase: true,
         trim: true,
     },
-    fullname: {
+    fullName: {
         type: String,
         required: true,
         trim: true,
@@ -28,6 +28,15 @@ const UserSchema = new Schema({
         type: String, // cloudinary
         required: true,
     },
+    coverImage: {
+        type: String,
+    },
+    watchHistory: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Video",
+        }
+    ],
     password: {
         type: String,
         required: [true, "Password is required!!!"],
@@ -53,7 +62,7 @@ UserSchema.methods.generateAccessToken = function (password) {
             _id: this._id,
             email: this.email,
             username: this.username,
-            fullname: this.fullname,
+            fullName: this.fullName,
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
