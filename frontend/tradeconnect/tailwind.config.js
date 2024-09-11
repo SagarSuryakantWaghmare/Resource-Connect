@@ -12,11 +12,19 @@ export default {
         "stdBg":"#ECDDD6"
       },
       fontFamily:{
-        roboto: ['stdFont', 'sans-serif'],
+        stdFont : ['poppins', 'sans-serif'],
       },
       fontSize:{
-        "primaryFont":"16px",
-        "secondaryFont":"18px"
+        "headTag":"32px",
+        "primaryFont":"18px",
+        "secondaryFont":"16px"     
+
+      },
+      height:{
+        "inpBtnH":"35px"
+      },
+      width:{
+        "inpBtnW":"200px"
 
       }
     },
