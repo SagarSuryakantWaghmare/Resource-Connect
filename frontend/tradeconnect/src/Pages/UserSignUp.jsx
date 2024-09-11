@@ -12,7 +12,7 @@ export default function UserSignUp() {
                         </div>
                         <h1 className='text-headTag font-bold text-stdBlue mt-2'>Registration</h1>
                     </div>
-                    <div id="inputField" className='flex flex-col gap-3 items-center  text-secondaryFont mt-6'>
+                    <div id="inputField" className='flex flex-col gap-3 items-center  text-secondaryFont mt-4'>
                         <input type="text" placeholder='Full Name' className='w-[330px] h-inpH rounded-lg pl-3 outline-none  border-2 '/>
                         <input type="text" placeholder='Email' className='w-[330px] h-inpH rounded-lg pl-3  border-2'  />
                         <div className='flex gap-1'>
@@ -44,7 +44,7 @@ export default function UserSignUp() {
                         </div>
                         <input type="password" placeholder='Password' className='w-[330px] h-inpH rounded-lg pl-3   border-2 outline-none' />
                         <input type="passwrod" placeholder='confirm password' className='w-[330px] h-inpH rounded-lg pl-3 border-2 outline-none ' />
-                        <p className='text-[12px] '>By signing up you agree to our Terms of Use and Privacy Policy.</p>
+                        <p className='text-[12px] '>By signing up you agree to our <span className='font-bold  text-stdBlue'>Terms of Use</span> and <span className='font-bold text-stdBlue'>Privacy Policy.</span></p>
                         <button className='text-stdBlue h-inpBtnH w-[150px] rounded-full font-bold text-primaryFont bg-stdYellow mt-2'>Register</button>
 
                     </div>
