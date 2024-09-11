@@ -9,7 +9,8 @@ export default {
       colors:{
         "stdYellow":"#FFC107",
         "stdBlue":"#223265",
-        "stdBg":"#ECDDD6"
+        "stdBg":"#ECDDD6",
+        "inpBg":"#C7C8CC"
       },
       fontFamily:{
         stdFont : ['poppins', 'sans-serif'],
@@ -21,7 +22,8 @@ export default {
 
       },
       height:{
-        "inpBtnH":"35px"
+        "inpBtnH":"35px",
+        "inpH":"40px"
       },
       width:{
         "inpBtnW":"200px"

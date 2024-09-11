@@ -1,6 +1,6 @@
 import './App.css'
 // import Navbar from './components/Navbar'
-import LoginPage from './Pages/SignLog'
+import UserSignUp from './Pages/UserSignUp'
 
 function App() {
 
@@ -9,7 +9,9 @@ function App() {
     <>
     {/* <h1 className='text-3xl bg-pink-400'>This is frontend</h1> */}
     {/* <Navbar/> */}
-    <LoginPage/>
+    <UserSignUp/>
+
+    
     </>
   )
 }
