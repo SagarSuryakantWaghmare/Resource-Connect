@@ -24,6 +24,26 @@ const UserSchema = new Schema({
         trim: true,
         index: true,
     },
+    addressLine1: {
+        type: String,
+        required: true,
+    },
+    addressLine2: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+    state: {
+        type: String,
+        required: true,
+    },
+    zip: {
+        type: String,
+        required: true,
+    },
     avatar: {
         type: String, // cloudinary
         required: true,
@@ -31,12 +51,6 @@ const UserSchema = new Schema({
     coverImage: {
         type: String,
     },
-    watchHistory: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Video",
-        }
-    ],
     password: {
         type: String,
         required: [true, "Password is required!!!"],
