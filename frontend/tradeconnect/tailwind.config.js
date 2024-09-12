@@ -10,15 +10,20 @@ export default {
         "stdYellow":"#FFC107",
         "stdBlue":"#223265",
         "stdBg":"#ECDDD6",
-        "inpBg":"#C7C8CC"
+        "inpBg":"#C7C8CC",
+        "reviewdiv":"#FAD5B3"
       },
       fontFamily:{
         stdFont : ['poppins', 'sans-serif'],
       },
       fontSize:{
+        "homeTag":"40px",        
         "headTag":"32px",
         "primaryFont":"18px",
-        "secondaryFont":"16px"     
+        "secondaryFont":"16px",
+        "ternaryFont":"22px",
+        "paraFont":"14px"
+            
 
       },
       height:{
