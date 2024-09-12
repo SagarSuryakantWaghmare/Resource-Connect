@@ -31,7 +31,8 @@ export default {
         "inpH":"40px"
       },
       width:{
-        "inpBtnW":"200px"
+        "inpBtnW":"200px",
+        "inpW":"330px"
 
       }
     },

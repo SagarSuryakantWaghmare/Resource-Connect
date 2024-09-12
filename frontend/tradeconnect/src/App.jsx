@@ -1,24 +1,19 @@
-import './App.css'
-import Navbar from './components/Navbar'
+import './App.css';
+import Navbar from './components/Navbar';
 // import UserSignUp from './Pages/UserSignUp'
 // import SignLog from './Pages/SignLog'
-import HomePage from './Pages/HomePage'
+import HomePage from './Pages/HomePage';
+import LoginPage from './Pages/LoginPage'
 
 function App() {
-
-
   return (
     <>
-    {/* <h1 className='text-3xl bg-pink-400'>This is frontend</h1> */}
-    <Navbar/>
-    {/* <UserSignUp/> */}
-    {/* <SignLog/> */}
-    <HomePage/>
+      <Navbar />
+      {/* <HomePage /> */}
+      <LoginPage/>
 
-
-    
     </>
-  )
+  );
 }
 
-export default App
+export default App;
