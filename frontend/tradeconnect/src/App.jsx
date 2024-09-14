@@ -1,7 +1,7 @@
 import './App.css';
 // import Navbar from './components/Navbar';
-// import UserSignUp from './Pages/UserSignUp'
-import SignLog from './Pages/SignLog'
+import UserSignUp from './Pages/UserSignUp'
+// import SignLog from './Pages/SignLog'
 // import HomePage from './Pages/HomePage';
 // import LoginPage from './Pages/LoginPage'
 
@@ -11,7 +11,8 @@ function App() {
       {/* <Navbar /> */}
       {/* <HomePage /> */}
       {/* <LoginPage/> */}
-      <SignLog/>
+      {/* <SignLog/> */}
+      <UserSignUp/>
 
     </>
   );
