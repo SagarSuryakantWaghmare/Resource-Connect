@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
 
 export default function UserSignUp() {
     return (
@@ -14,7 +15,7 @@ export default function UserSignUp() {
                     </div>
                     <div id="inputField" className='flex flex-col gap-3 items-center  text-secondaryFont mt-4'>
                         <input type="text" placeholder='Full Name' className='h-[40px]  w-full max-w-[300px] md:max-w-[330px] rounded-lg pl-3 outline-none  border-2 text-sm md:text-base' />
-                        <input type="text" placeholder='Email'  className='h-[40px]  w-full max-w-[300px] md:max-w-[330px] rounded-lg pl-3 outline-none  border-2 text-sm md:text-base'/>
+                        <input type="text" placeholder='Email' className='h-[40px]  w-full max-w-[300px] md:max-w-[330px] rounded-lg pl-3 outline-none  border-2 text-sm md:text-base' />
                         <div className='flex gap-1'>
                             <button className='bg-white h-[40px] w-[45px] rounded-l-lg  text-sm md:text-base border-2 outline-none'>+91</button>
                             <input type="phone" placeholder='Phone No' className='h-[40px] md:max-w-[180px] w-full max-w-[160px] rounded-r-lg pl-3 mr-4 text-sm md:text-base  border-2 outline-none' />
@@ -42,14 +43,22 @@ export default function UserSignUp() {
                                 </select>
                             </div>
                         </div>
-                        <input type="password" placeholder='Password'  className='h-[40px]  w-full max-w-[300px] md:max-w-[330px] rounded-lg pl-3 outline-none  border-2 text-sm md:text-base' />
-                        <input type="passwrod" placeholder='confirm password'  className='h-[40px]  w-full max-w-[300px] md:max-w-[330px] rounded-lg pl-3 outline-none  border-2 text-sm md:text-base' />
+                        <input type="password" placeholder='Password' className='h-[40px]  w-full max-w-[300px] md:max-w-[330px] rounded-lg pl-3 outline-none  border-2 text-sm md:text-base' />
+                        <input type="passwrod" placeholder='confirm password' className='h-[40px]  w-full max-w-[300px] md:max-w-[330px] rounded-lg pl-3 outline-none  border-2 text-sm md:text-base' />
                         <div className='flex items-center justify-center w-full'>
                             <p className='text-[12px] md:text-[14px] text-center max-w-[300px]'>
                                 By signing up you agree to our <span className='font-bold text-stdBlue'>Terms of Use</span> and <span className='font-bold text-stdBlue'>Privacy Policy.</span>
                             </p>
                         </div>
+                        <Link to="/">
                         <button className='text-stdBlue h-[40px] w-full md:w-[150px] max-w-[200px] rounded-full font-bold text-primaryFont bg-stdYellow mt-2'>Register</button>
+                        </Link>
+
+                       
+
+
+
+
 
                     </div>
 
