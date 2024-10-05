@@ -7,17 +7,19 @@ import UserSignUp from './Pages/UserSignUp';
 import SignLog from './Pages/SignLog';
 import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
+import Services from './Pages/Services'; // Assuming your Services component is located in the Pages folder
 
 function App() {
   return (
     <Router>
-      <Navbar /> {/* This will be displayed across all routes */}
+      <Navbar /> 
       <Routes>
-        {/* Define routes for different pages */}
+       
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<UserSignUp />} />
         <Route path="/signlog" element={<SignLog />} />
+        <Route path="/services" element={<Services />} /> 
       </Routes>
     </Router>
   );
