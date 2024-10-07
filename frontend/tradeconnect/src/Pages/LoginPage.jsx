@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
 
 export default function LoginPage() {
     return (
@@ -18,15 +19,19 @@ export default function LoginPage() {
                         <input type="password" placeholder='Password' className='h-[45px] w-full max-w-[300px] md:max-w-[350px] border rounded-2xl pl-3 outline-none text-sm md:text-base' />
                     </div>
                     <p className='text-right  mt-2 md:text-sm text-paraFont'>
-                        <a href="#">Forgot Password?</a>
+                        <Link href="#">Forgot Password?</Link>
                     </p>
                     <div className="mt-5">
-                        <button className='h-[45px] w-[120px] bg-stdBlue rounded-full text-[18px] font-bold text-stdYellow'>
+
+                    <Link to="/">
+                    <button className='h-[45px] w-[120px] bg-stdBlue rounded-full text-[18px] font-bold text-stdYellow'>
                             Login
                         </button>
+                        </Link>
+                        
                     </div>
                     <p className='text-[12px] md:text-sm mt-2'>
-                        Don't have an account? <a href="#" className='text-[14px] font-semibold text-stdBlue'>Sign Up</a>
+                        Don't have an account? <Link href="#" className='text-[14px] font-semibold text-stdBlue'>Sign Up</Link>
                     </p>
                     <fieldset className='mt-2'>
                         <legend>OR</legend>
