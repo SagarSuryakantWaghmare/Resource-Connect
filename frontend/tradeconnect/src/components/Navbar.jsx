@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
+
 
 export default function Navbar() {
   return (
@@ -11,7 +13,14 @@ export default function Navbar() {
 
         <div className=" justify-center text-center flex gap-16 items-center  ">
           <a href="" className='text-[18px] font-semibold'>Service</a>
-          <button className='text-[18px] font-semibold mr-7 p-1 w-[90px] bg-stdYellow rounded-lg'> Sign In</button>
+
+          <Link to="/signlog">
+              <button className='text-[18px] font-semibold mr-7 p-1 w-[90px] bg-stdYellow rounded-lg'>
+                Sign Up
+              </button>
+            </Link>
+          
+          
         </div>
       </nav>
 
