@@ -23,7 +23,7 @@ export default function LoginPage() {
                     </p>
                     <div className="mt-5">
 
-                    <Link to="/">
+                    <Link to="/UserProfile">
                     <button className='h-[45px] w-[120px] bg-stdBlue rounded-full text-[18px] font-bold text-stdYellow'>
                             Login
                         </button>

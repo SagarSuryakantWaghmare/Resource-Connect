@@ -11,7 +11,14 @@ export default {
         "stdBlue":"#223265",
         "stdBg":"#ECDDD6",
         "inpBg":"#C7C8CC",
-        "reviewdiv":"#FAD5B3"
+        "reviewdiv":"#FAD5B3",
+         "color1":"#FF3D00",
+         "color2":"#FFDACF",
+         "color3":"#FDD017",
+         "btnColor":"#223265",
+         "profilebtn":"#4400FF",
+         "footercolr":"#000836"
+        
       },
       fontFamily:{
         stdFont : ['poppins', 'sans-serif'],
@@ -23,6 +30,7 @@ export default {
         "secondaryFont":"16px",
         "ternaryFont":"22px",
         "paraFont":"14px"
+       
             
 
       },
@@ -34,6 +42,9 @@ export default {
         "inpBtnW":"200px",
         "inpW":"330px"
 
+      },
+      padding:{
+        "padsize":"15px"
       }
     },
   },
