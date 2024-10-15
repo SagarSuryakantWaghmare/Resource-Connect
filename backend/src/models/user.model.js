@@ -4,9 +4,9 @@ import bcrypt from "bcrypt"
 
 const userSchema = new Schema(
     {
-        username: {
+        businessName: {
             type: String,
-            required: true,
+            required: false,
             unique: true,
             lowercase: true,
             trim: true,
@@ -20,6 +20,18 @@ const userSchema = new Schema(
             trim: true,
         },
         fullName: {
+            type: String,
+            required: true,
+            trim: true,
+            index: true
+        },
+        contact: {
+            type: String,
+            required: true,
+            trim: true,
+            index: true
+        },
+        pincode: {
             type: String,
             required: true,
             trim: true,
