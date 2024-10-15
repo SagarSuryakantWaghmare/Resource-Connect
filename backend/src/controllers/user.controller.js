@@ -1,6 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js"
 import { User } from "../models/user.model.js"
+import { serviceProvider } from "../models/serviceProvider.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken"
@@ -323,6 +324,22 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
     return res
         .status(200)
         .json(new ApiResponse(200, user, "User CoverImage Updated Successfully"));
+});
+
+const searchServiceProvider = asyncHandler(async (req, res) => {
+    const { location, profession, experience, rating, availability } = req.body;
+
+    const tradesperson = await serviceProvider.find({
+        location: { $regex: location, $options: "i" },
+        professions: { $in: profession },
+        experience: { $gte: experience },
+        rating: { $gte: rating },
+        availability: availability
+    });
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, tradesperson, "Tradesperson fetched successfully"));
 });
 
 export {
