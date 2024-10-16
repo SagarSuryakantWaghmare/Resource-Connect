@@ -1,0 +1,17 @@
+{
+  "name": "resource-connect",
+  "version": "1.0.0",
+  "description": "A web application to connect tradespeople with consumers.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start:server": "cd backend && npm run dev",
+    "start:client": "cd frontend/tradeconnect && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
