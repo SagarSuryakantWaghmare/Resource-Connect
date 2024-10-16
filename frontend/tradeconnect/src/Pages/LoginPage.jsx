@@ -20,15 +20,24 @@ export default function LoginPage() {
 
                 if (response.status === 200) {
                     document.cookie = `accessToken=${JsonData.data.accessToken}; path=/;`;
-                    console.log('User Logged in Successfully');
                     navigate('/home');
                 } else {
                     setError(JsonData.message || 'Login failed');
                 }
             })
             .catch((error) => {
-                console.log(`Error: ${error}`)
-                setError('Login Failed. Please try again.');
+                // console.log(`Error: ${error}`)
+                if (error.response.status === 400) {
+                    setError('Username or Email is required');
+                } else if (error.response.status === 401) {
+                    setError('Password is required');
+                } else if (error.response.status === 402) {
+                    setError('Invalid Password');
+                } else if (error.response.status === 404) {
+                    setError('User does not exist');
+                } else {
+                    setError('Login Failed. Please try again.');
+                }
             });
     };
 
