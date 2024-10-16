@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -11,33 +12,24 @@ export default function LoginPage() {
         e.preventDefault();
         setError('');
 
-        try {
-            const response = await fetch('http://localhost:8000/api/v1/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
+        axios.post('http://localhost:8000/api/v1/users/login',
+            { email, password, },
+            { headers: { 'Content-Type': 'application/json', } })
+            .then((response) => {
+                const JsonData = response.data;
+
+                if (response.status === 200) {
+                    document.cookie = `accessToken=${JsonData.data.accessToken}; path=/;`;
+                    console.log('User Logged in Successfully');
+                    navigate('/home');
+                } else {
+                    setError(JsonData.message || 'Login failed');
+                }
+            })
+            .catch((error) => {
+                console.log(`Error: ${error}`)
+                setError('Login Failed. Please try again.');
             });
-
-            const JsonData = await response.json();
-
-            if (response.ok) {
-                // console.log("Access Token: ", data.data.accessToken);
-                document.cookie = `accessToken=${JsonData.data.accessToken}; path=/;`;
-                console.log('User Logged in Successfully');
-                navigate('/home'); // Redirect to the homepage or another page
-            } else {
-                // Handle errors
-                setError(JsonData.message || 'Login failed');
-            }
-        } catch (err) {
-            if (err.message === 'Failed to fetch') {
-                setError('Failed to connect to the server. Please check your internet connection');
-            } else {
-                setError('An unexpected error occurred. Please try again.');
-            }
-        }
     };
 
     return (
