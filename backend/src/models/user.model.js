@@ -9,7 +9,8 @@ const userSchema = new Schema(
             unique: true,
             lowercase: true,
             trim: true,
-            index: true
+            index: true,
+            default: "none"
         },
         email: {
             type: String,
@@ -55,13 +56,13 @@ const userSchema = new Schema(
         refreshToken: {
             type: String
         },
-        state:{
+        state: {
             type: String,
             required: true,
             trim: true,
             index: true
         },
-        city:{
+        city: {
             type: String,
             required: true,
             trim: true,
