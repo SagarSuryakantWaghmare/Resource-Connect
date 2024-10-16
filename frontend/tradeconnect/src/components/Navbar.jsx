@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if the accessToken is present in cookies
@@ -13,6 +16,30 @@ export default function Navbar() {
     }
   }, []);
 
+  // const handleLogout = async () => {
+  //     const token = document.cookie.split('; ').find(row => row.startsWith('accessToken=')).split('=')[1];
+  //     if (!token) {
+  //       throw new Error('No token found');
+  //       navigate('/login');
+  //     }
+
+  //     axios.post('http://localhost:8000/api/v1/users/logout', {
+  //       headers: {
+  //         'Authorization': `Bearer ${token}`,
+  //         'Content-Type': 'application/json',
+  //       }
+  //     }).then((response) => {
+  //       if (response.status === 200) {
+  //         document.cookie = 'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  //         navigate('/login');
+  //       } else {
+  //         throw new Error('Logout failed');
+  //       }
+  //     }).catch((error) => {
+  //       console.error('Error logging out:', error);
+  //     });
+  // };
+
   const handleLogout = async () => {
     try {
       const token = document.cookie.split('; ').find(row => row.startsWith('accessToken=')).split('=')[1];
@@ -20,22 +47,20 @@ export default function Navbar() {
         throw new Error('No token found');
       }
 
-      axios.post('http://localhost:8000/api/v1/users/logout', {
+      const response = await fetch('http://localhost:8000/api/v1/users/logout', {
+        method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
-        }
-      }).then((response) => {
-        if (response.status === 200) {
-          document.cookie = 'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-          navigate('/login');
-        } else {
-          throw new Error('Logout failed');
-        }
-      }).catch((error) => {
-        console.error('Error logging out:', error);
+        },
       });
-      
+
+      if (response.ok) {
+        document.cookie = 'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        navigate('/login');
+      } else {
+        throw new Error('Logout failed');
+      }
     } catch (error) {
       console.error('Error logging out:', error);
     }
