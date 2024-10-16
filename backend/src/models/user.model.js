@@ -6,7 +6,6 @@ const userSchema = new Schema(
     {
         businessName: {
             type: String,
-            required: false,
             unique: true,
             lowercase: true,
             trim: true,
@@ -31,7 +30,7 @@ const userSchema = new Schema(
             trim: true,
             index: true
         },
-        pincode: {
+        zipcode: {
             type: String,
             required: true,
             trim: true,
@@ -55,6 +54,18 @@ const userSchema = new Schema(
         },
         refreshToken: {
             type: String
+        },
+        state:{
+            type: String,
+            required: true,
+            trim: true,
+            index: true
+        },
+        city:{
+            type: String,
+            required: true,
+            trim: true,
+            index: true
         }
 
     },
@@ -79,7 +90,7 @@ userSchema.methods.generateAccessToken = function () {
         {
             _id: this._id,
             email: this.email,
-            username: this.username,
+            businessName: this.businessName,
             fullName: this.fullName
         },
         process.env.ACCESS_TOKEN_SECRET,
