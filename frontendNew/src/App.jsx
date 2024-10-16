@@ -7,6 +7,7 @@ import LoginPage from './Pages/LoginPage';
 import ServicePage from './Pages/ServicePage';
 import Servicesearch from './Pages/ServiceSearch';
 import UserProfile from './Pages/UserProfile';
+import LandingPageUser from './Pages/'
 
 function App() {
   return (
