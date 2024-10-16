@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const serviceProvider = new mongoose.Schema(
+const serviceProviderSchema = new mongoose.Schema(
     {
         professions: {
             type: [String], // Array of professions
@@ -53,7 +53,7 @@ const serviceProvider = new mongoose.Schema(
     }
 );
 
-serviceProvider.pre("save", async function (next) {
+serviceProviderSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
 
     try {
@@ -64,15 +64,13 @@ serviceProvider.pre("save", async function (next) {
     }
 });
 
-serviceProvider.methods.isPasswordCorrect = async function (password) {
+serviceProviderSchema.methods.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-serviceProvider.methods.generateAuthToken = function () {
+serviceProviderSchema.methods.generateAuthToken = function () {
     const token = jwt.sign({ _id: this._id, userType: this.userType }, process.env.JWT_SECRET, { expiresIn: '1h' });
     return token;
 };
 
-const serviceProvider = mongoose.model('Tradesperson', serviceProvider);
-
-module.exports = serviceProvider;
+export const serviceProvider = mongoose.model('serviceProvider', serviceProviderSchema);
