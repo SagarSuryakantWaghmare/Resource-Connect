@@ -28,23 +28,23 @@ const generateAccessAndRefreshTokens = async (userId) => {
 
 const registerUser = asyncHandler(async (req, res) => {
 
-    const { fullName, email, username, password, userType } = req.body
+    const { fullName, email, businessName, password, userType, contact, zipcode, state, city } = req.body
     console.log(req.body);
 
     if (
-        [fullName, email, username, password, userType].some((field) => field?.trim() === "")
+        [fullName, email, password, userType, businessName, contact, zipcode, state, city].some((field) => field?.trim() === "")
     ) {
         throw new ApiError(400, "All fields are required")
     }
 
     const existedUser = await User.findOne({
-        $or: [{ username }, { email }]
+        $or: [{ businessName }, { email }]
     })
 
     if (existedUser) {
         throw new ApiError(409, "User with email or username already exists")
     }
-    //console.log(req.files);
+    // console.log(req.files);
 
     const avatarLocalPath = req.files?.avatar[0]?.path;
     //const coverImageLocalPath = req.files?.coverImage[0]?.path;
@@ -73,8 +73,12 @@ const registerUser = asyncHandler(async (req, res) => {
         coverImage: coverImage?.url || "",
         email,
         password,
-        username: username.toLowerCase(),
+        businessName,
         userType,
+        contact,
+        zipcode,
+        state,
+        city,
     })
 
     const createdUser = await User.findById(user._id).select(
@@ -85,22 +89,25 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(500, "Something went wrong while registering the user")
     }
 
-    return res.status(201).json(
+    const response = res.status(201).json(
         new ApiResponse(200, createdUser, "User registered Successfully")
-    )
+    );
+    console.log('User registered Successfully');
+
+    return response;
 
 });
 
 const loginUser = asyncHandler(async (req, res) => {
 
-    const { email, username, password } = req.body;
+    const { email, businessName, password } = req.body;
 
-    if (!username && !email) {
-        throw new ApiError(400, "username or email is required")
+    if (!email && !businessName) {
+        throw new ApiError(400, "Email or Username is required")
     }
 
     const user = await User.findOne({
-        $or: [{ username }, { email }]
+        $or: [{ businessName }, { email }]
     })
 
     if (!user) {
@@ -136,7 +143,7 @@ const loginUser = asyncHandler(async (req, res) => {
             )
         );
 
-    console.log(response);
+    console.log("User Logged in Successfully");
 
     return response;
 
@@ -166,7 +173,7 @@ const logoutUser = asyncHandler(async (req, res) => {
         .clearCookie("refreshToken", options)
         .json(new ApiResponse(200, {}, "User logged Out"));
 
-    console.log(response);
+    console.log('User logged Out');
 
     return response;
 });
@@ -231,11 +238,12 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
     await user.save({ validateBeforeSave: false })
 
     const response = res.status(200).json(new ApiResponse(200, {}, "Password is changed successfully"));
-    console.log(response);
+    console.log('Password Changed Successfully');
     return response;
 });
 
 const getCurrentUser = asyncHandler(async (req, res) => {
+    console.log('Current User: ', req.user);
     return res
         .status(200)
         .json(new ApiResponse(200, req.user, "Current user fetched successfully"));
@@ -266,7 +274,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
         .status(200)
         .json(new ApiResponse(200, user, "Account details updated successfully"));
 
-    console.log(response);
+    console.log('Account details updated successfully');
 
     return response;
 });
@@ -352,4 +360,5 @@ export {
     updateAccountDetails,
     updateUserAvatar,
     updateUserCoverImage,
+    searchServiceProvider,
 }
