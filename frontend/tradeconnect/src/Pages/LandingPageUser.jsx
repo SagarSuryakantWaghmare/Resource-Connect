@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,25 +9,27 @@ export default function LandingPageUser() {
 
     useEffect(() => {
         const fetchUserData = async () => {
+
             try {
                 const token = document.cookie.split('; ').find(row => row.startsWith('accessToken=')).split('=')[1];
                 if (!token) {
                     throw new Error('No token found');
                 }
 
-                const response = await fetch('http://localhost:8000/api/v1/users/current-user', {
+                axios.get('http://localhost:8000/api/v1/users/current-user', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
-                    },
+                    }
+                }).then((response) => {
+                    if (response.status === 200) {
+                        setUserName(response.data.data.fullName);
+                    } else {
+                        throw new Error('Failed to fetch user data');
+                    }
+                }).catch((error) => {
+                    console.error('Error fetching user data:', error);
                 });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    setUserName(data.data.fullName);
-                } else {
-                    throw new Error('Failed to fetch user data');
-                }
             } catch (error) {
                 console.error('Error fetching user data:', error);
                 navigate('/login');
