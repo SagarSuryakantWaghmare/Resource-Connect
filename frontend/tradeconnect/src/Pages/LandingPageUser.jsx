@@ -1,6 +1,9 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Axios from './axiosConfig';
+import Cookies from 'js-cookie';
+import checkLogin from '../utils/checkLogin';
 
 export default function LandingPageUser() {
     const [userName, setUserName] = useState('');
@@ -11,27 +14,21 @@ export default function LandingPageUser() {
 
     useEffect(() => {
         const fetchUserData = async () => {
+            checkLogin(navigate);
 
             try {
-                const token = document.cookie.split('; ').find(row => row.startsWith('accessToken=')).split('=')[1];
-                if (!token) {
-                    throw new Error('No token found');
-                }
-
-                axios.get('http://localhost:8000/api/v1/users/current-user', {
+                const token = Cookies.get('accessToken');
+                const response = await axios.get('/api/v1/users/current-user', {
                     headers: {
-                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
                     }
-                }).then((response) => {
-                    if (response.status === 200) {
-                        setUserName(response.data.data.fullName);
-                    } else {
-                        throw new Error('Failed to fetch user data');
-                    }
-                }).catch((error) => {
-                    console.error('Error fetching user data:', error);
                 });
+                if (response.status === 200) {
+                    setUserName(response.data.data.fullName);
+                } else {
+                    throw new Error('Failed to fetch user data');
+                }
             } catch (error) {
                 console.error('Error fetching user data:', error);
                 navigate('/login');
@@ -51,48 +48,14 @@ export default function LandingPageUser() {
         e.preventDefault();
         setLoading(true);
         try {
-            // Replace with your actual search API endpoint
-            const response = await fetch(`http://localhost:8000/api/v1/search?query=${searchQuery}`);
-            const data = await response.json();
-            setSearchResults(data.results);
+            const response = await Axios.get(`/search?query=${searchQuery}`);
+            setSearchResults(response.data.results);
         } catch (error) {
             console.error('Error performing search:', error);
         } finally {
             setLoading(false);
         }
     };
-
-    // const handleLogout = async () => {
-    //     try {
-    //         const token = document.cookie.split('; ').find(row => row.startsWith('accessToken=')).split('=')[1];
-    //         if (!token) {
-    //             throw new Error('No token found');
-    //         }
-
-    //         const response = await fetch('http://localhost:8000/api/v1/users/logout', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Authorization': `Bearer ${token}`,
-    //                 'Content-Type': 'application/json',
-    //             },
-    //         });
-
-    //         if (response.ok) {
-    //             document.cookie = 'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    //             navigate('/login');
-    //         } else {
-    //             throw new Error('Logout failed');
-    //         }
-    //     } catch (error) {
-    //         console.error('Error logging out:', error);
-    //     }
-    // };
-
-    /*
-    <button onClick={handleLogout} className='mt-5 h-[45px] w-[120px] bg-stdBlue rounded-full text-[18px] font-bold text-stdYellow'>
-    Logout
-    </button>
-    */
 
     if (loading) {
         return <div>Loading...</div>;
@@ -132,4 +95,4 @@ export default function LandingPageUser() {
             </div>
         </div>
     );
-};
+}
