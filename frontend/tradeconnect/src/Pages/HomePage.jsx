@@ -2,14 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
 import HomePhoto01 from "../components/Assets/HomePagePhoto01.png";
 import HomeProffessions from "../components/Assets/Icons/proffessionIcons.png";
-import Proffessions from '../components/Proffessions';
-import WorkingOnHome from '../components/WorkingOnHome';
 import ReviewsHome from '../components/ReviewsHome';
 import RatingPage from "./RatingProjectPage.jsx";
 import ReviewHome from "../components/ReviewsHome.jsx";
 import ContactUs from '../components/contactUs.jsx';
 
-export default function HomePage() {
+export default function HomePage(props) {
   return (
     <>
       <div id="main" className="w-full h-[90vh] bg-white">
@@ -53,12 +51,33 @@ export default function HomePage() {
         </div>
       </div>
 
-      <RatingPage/>
-      < ReviewHome/>
-      <h2 className='text-[32px] text-black text-center font-bold mb-12 mt-6'>Get in touch <span className='text-color1'> By Calling us</span></h2>
-      <ContactUs/>
+      <RatingPage />
 
-     
+      {/* review page section */}
+
+      <div className="flex flex-col items-center justify-center w-full py-12">
+        <h2 className="text-3xl font-bold mb-10">See what happy customers are saying about TradeConnect</h2>
+        <div className="flex flex-col w-full items-center ">
+            <div className='flex gap-[4rem]'>
+              < ReviewHome name="Sophie Carter" />
+              < ReviewHome name="Benjamin Adams"/>
+            </div>   
+            <div>
+              <div className='bg-black h-[50px] w-[50px] rounded-[50%] mt-4'></div>
+            </div>
+            <div className='flex gap-[4rem] mt-4 '>
+              < ReviewHome name="Matthew Evans" />
+              < ReviewHome name="Oliver Scott" />
+            </div>         
+        </div>
+      </div>
+
+      {/* ContactPage starts */}
+
+      <h2 className='text-[32px] text-black text-center font-bold mb-12 mt-6'>Get in touch <span className='text-color1'> By Calling us</span></h2>
+      <ContactUs />
+
+
 
 
 

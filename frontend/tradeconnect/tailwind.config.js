@@ -8,6 +8,7 @@ export default {
     extend: {
       colors:{
         "stdYellow":"#FFC107",
+        "PrimaryColor1":"#FF3D00",
         "stdBlue":"#223265",
         "stdBg":"#ECDDD6",
         "inpBg":"#C7C8CC",
@@ -17,7 +18,8 @@ export default {
          "color3":"#FDD017",
          "btnColor":"#223265",
          "profilebtn":"#4400FF",
-         "footercolr":"#000836"
+         "footercolr":"#000836",
+         "newRequestbg":"#FFDFD6"
         
       },
       fontFamily:{
@@ -29,14 +31,16 @@ export default {
         "primaryFont":"18px",
         "secondaryFont":"16px",
         "ternaryFont":"22px",
-        "paraFont":"14px"
+        "paraFont":"14px",
+        "paraHead":"36px"
        
             
 
       },
       height:{
         "inpBtnH":"35px",
-        "inpH":"40px"
+        "inpH":"40px",
+        "LargeBtn":"45px"
       },
       width:{
         "inpBtnW":"200px",
@@ -45,6 +49,7 @@ export default {
       },
       padding:{
         "padsize":"15px"
+        
       }
     },
   },
