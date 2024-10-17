@@ -20,7 +20,15 @@ export default function LoginPage() {
 
                 if (response.status === 200) {
                     document.cookie = `accessToken=${JsonData.data.accessToken}; path=/;`;
-                    navigate('/home');
+                    if (JsonData.data.userType === 'user') {
+                        navigate('/home');
+                    } else if (JsonData.data.userType === 'serviceProvider') {
+                        navigate('/home-service-provider');
+                    } else if (JsonData.data.userType === 'admin') {
+                        navigate('/home-admin');
+                    } else {
+                        setError('Login failed');
+                    }
                 } else {
                     setError(JsonData.message || 'Login failed');
                 }
