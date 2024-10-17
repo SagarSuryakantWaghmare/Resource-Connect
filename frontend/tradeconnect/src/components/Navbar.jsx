@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Axios from '../Pages/axiosConfig.js';
 
 export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -45,7 +44,7 @@ export default function Navbar() {
   return (
     <>
       <nav className='flex justify-between items-center h-[70px] border-b-2 w-full font-stdFont '>
-        <Link to="/">
+        <Link to='/'>
           <div className="flex ml-5" id='Logo'>
             <button className='bg-Btn-color2 h-[40px] w-[80px] rounded-l-lg text-[18px] font-bold bg-stdYellow text-stdBlue pl-3'>
               Trade
