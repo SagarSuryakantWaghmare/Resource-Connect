@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Axios from '../Pages/axiosConfig.js';
 
 export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -14,62 +15,37 @@ export default function Navbar() {
     if (token) {
       setIsAuthenticated(true);
     }
-  }, []);
-
-  // const handleLogout = async () => {
-  //     const token = document.cookie.split('; ').find(row => row.startsWith('accessToken=')).split('=')[1];
-  //     if (!token) {
-  //       throw new Error('No token found');
-  //       navigate('/login');
-  //     }
-
-  //     axios.post('http://localhost:8000/api/v1/users/logout', {
-  //       headers: {
-  //         'Authorization': `Bearer ${token}`,
-  //         'Content-Type': 'application/json',
-  //       }
-  //     }).then((response) => {
-  //       if (response.status === 200) {
-  //         document.cookie = 'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-  //         navigate('/login');
-  //       } else {
-  //         throw new Error('Logout failed');
-  //       }
-  //     }).catch((error) => {
-  //       console.error('Error logging out:', error);
-  //     });
-  // };
+  }, [navigate]);
 
   const handleLogout = async () => {
-    try {
-      const token = document.cookie.split('; ').find(row => row.startsWith('accessToken=')).split('=')[1];
-      if (!token) {
-        throw new Error('No token found');
-      }
+    const token = Cookies.get('accessToken');
+    if (!token) {
+      throw new Error('No token found');
+    }
 
-      const response = await fetch('http://localhost:8000/api/v1/users/logout', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
+    await axios.post('/api/v1/users/logout', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+      if (response.status === 200) {
         document.cookie = 'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-        navigate('/login');
       } else {
         throw new Error('Logout failed');
       }
-    } catch (error) {
+    }).catch(error => {
       console.error('Error logging out:', error);
-    }
+    }).finally(() => {
+      setIsAuthenticated(false);
+      navigate('/login');
+    })
   };
 
   return (
     <>
       <nav className='flex justify-between items-center h-[70px] border-b-2 w-full font-stdFont '>
-        <Link to="/home">
+        <Link to="/">
           <div className="flex ml-5" id='Logo'>
             <button className='bg-Btn-color2 h-[40px] w-[80px] rounded-l-lg text-[18px] font-bold bg-stdYellow text-stdBlue pl-3'>
               Trade
@@ -83,7 +59,7 @@ export default function Navbar() {
         <div className="justify-center text-center flex gap-16 items-center">
           {isAuthenticated ? (
             <>
-              <Link to="/book" className='text-[18px] font-semibold'>
+              <Link to="/home" className='text-[18px] font-semibold'>
                 Book
               </Link>
               <Link to="/my-bookings" className='text-[18px] font-semibold'>
@@ -105,6 +81,11 @@ export default function Navbar() {
             </>
           ) : (
             <>
+              <Link to="/signup-w">
+                <button className='text-[18px] font-semibold mr-7 p-1 w-[auto] rounded-lg text-ellipsis'>
+                  Become a Pro
+                </button>
+              </Link>
               <Link to="/services" className='text-[18px] font-semibold'>
                 Service
               </Link>
