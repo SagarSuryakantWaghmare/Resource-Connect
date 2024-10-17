@@ -1,12 +1,12 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js"
-import { User } from "../models/user.model.js"
-import { serviceProvider } from "../models/serviceProvider.js"
-import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import mongoose from "mongoose";
 import { response } from "express";
+import { User } from "../models/user.model.js"
+import { serviceProvider } from "../models/serviceProvider.js";
 
 
 const generateAccessAndRefreshTokens = async (userId) => {
@@ -134,7 +134,7 @@ const loginUser = asyncHandler(async (req, res) => {
             new ApiResponse(
                 200,
                 {
-                    user: loggedInUser, accessToken, refreshToken
+                    user: loggedInUser, accessToken, refreshToken, userType: user.userType
                 },
                 "User logged In Successfully"
             )
