@@ -6,10 +6,7 @@ const userSchema = new Schema(
     {
         businessName: {
             type: String,
-            unique: true,
-            lowercase: true,
             trim: true,
-            index: true,
             default: "none"
         },
         email: {
@@ -39,14 +36,14 @@ const userSchema = new Schema(
         },
         avatar: {
             type: String, // cloudinary url
-            required: true,
+            // required: true,
         },
         coverImage: {
             type: String, // cloudinary url
         },
         userType: {
             type: String,
-            enum: ["admin", "user", "service-provider"],
+            enum: ["admin", "user", "serviceProvider"],
             default: "user"
         },
         password: {
