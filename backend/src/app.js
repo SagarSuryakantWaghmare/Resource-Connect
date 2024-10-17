@@ -27,10 +27,13 @@ app.use(cookieParser())
 
 //routes import
 import userRouter from './routes/user.routes.js'
+import serviceProviderRouter from './routes/serviceProvider.routes.js'
 
-//routes declaration
+
+//routes declaration for user
 app.use("/api/v1/users", userRouter)
 
-// http://localhost:8000/api/v1/users/${}
+//routes declaration for service provider
+app.use("/api/v1/service-providers", serviceProviderRouter)
 
 export { app }
