@@ -10,6 +10,7 @@ import ContactUs from '../components/contactUs.jsx';
 export default function HomePage(props) {
   return (
     <>
+    
       <div id="main" className="w-full h-[90vh] bg-white">
         <div className="flex flex-col items-center px-4 lg:px-0">
           <div className="font-bold items-center mt-8 lg:mt-16">
