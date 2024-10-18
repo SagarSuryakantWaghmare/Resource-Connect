@@ -19,7 +19,13 @@ export default {
          "btnColor":"#223265",
          "profilebtn":"#4400FF",
          "footercolr":"#000836",
-         "newRequestbg":"#FFDFD6"
+         "newRequestbg":"#FFEFEF",
+         "redflag":"#F95454",
+         "greenFlag":"#399918",
+         "Completedchat":"#000836",
+         "bgCompleted":"#EDE8DC",
+         "Pendingbg":"#D9D9D9",
+         "trackBar":"#399918"
         
       },
       fontFamily:{

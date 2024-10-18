@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function NewRequestBooking(props) {
+export default function CompletedRequestBooking(props) {
     return (
         <>
-        
-            <div className='h-[200px] w-[800px] bg-newRequestbg  rounded-2xl'>
-                
+
+            <div className='h-[300px] w-[800px] bg-bgCompleted  rounded-2xl'>       
                 <div className='flex justify-between'>
+                    
 
                     <div className='flex flex-col  px-2 py-2'>
                         <div className='flex gap-20'>
@@ -29,17 +29,30 @@ export default function NewRequestBooking(props) {
                             <p className='font-bold text-md'>Address : <span className='font-semibold text-sm'>Customer Address</span></p>
                         </div>
                     </div>
-                    <div className='mt-2'>
-                        <h1 className='text-xs font-bold text-btnColor '>{props.timeDate}</h1>
+                    <h1 className='text-xs font-bold text-btnColor mt-2'>{props.timeDate}</h1>
+                    <div className='flex flex-col justify-center mr-20 '>
+                        <button className='h-[50px] w-[140px] rounded-xl text-md text-white font-bold bg-Completedchat flex justify-center items-center'><i className="fa-brands fa-rocketchat text-xl mr-2 text-color1"></i>Let's chat</button>
+                    </div>
+
+                </div>
+                
+                <div className='flex  justify-between'>
+                    <div className='ml-5 mt-6'>
+                        <h1 className='font-bold'>Download Receipt </h1>
+                        <div className='flex justify-center items-center mt-1'>
+                         <button className='h-[35px] w-[85px] flex items-center justify-center rounded-lg bg-green-500 text-white mt-1 '>Invoice<i className="fa-solid fa-download text-sm ml-2"></i></button>
+
+                        </div>
+                        
                     </div>
                     
-
-                    <div className='flex flex-col justify-center mr-20 '>
-                        <div className='flex flex-col gap-8 '>
-                            <button className='h-[35px] w-[100px] rounded-full text-md text-white font-bold bg-greenFlag flex justify-center items-center'><i className="fa-solid fa-check mr-2 mt-1"></i>Accept </button>
-                            <button className='h-[35px] w-[100px] rounded-full text-md text-white font-bold bg-redflag flex justify-center items-center'><i className="fa-solid fa-xmark mr-2 mt-1"></i> Ignore</button>
-                        </div>
+                    <div className='mt-2 mr-7'>
+                        <h1 className='font-bold text-lg'>Completed <span><i className="fa-solid fa-circle-check text-greenFlag text-xl"></i></span></h1>
+                        <h1 className='font-semibold'>Advance Payment : <span className='font-bold'>Yes</span> </h1>
+                        <h1 className='font-semibold'>Total Charges : <span className='font-bold'>{props.Money}</span></h1>
+                        
                     </div>
+
 
 
                 </div>

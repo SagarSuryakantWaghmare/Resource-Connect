@@ -1,5 +1,6 @@
 import React from "react";
 import ProfileReview from "../components/ProfileReview";
+import ProfilePhoto from "../components/Assets/profileImage.jpg"
 
 
 export default function UserProfile(props) {
@@ -35,8 +36,8 @@ export default function UserProfile(props) {
                 <div className="mt-10 flex items-center flex-col px-20">
                     <div className="flex gap-20">
                         <div>
-                            <div className="border h-[250px] w-[250px] rounded-full bg-gray-100">
-                                <img src="" alt="" />
+                            <div className="border h-[250px] w-[250px] rounded-full bg-gray-100 flex justify-center items-center">
+                                <img src={ProfilePhoto}  className="border h-[240px] w-[240px] rounded-full"/>
                             </div>
                             <h1 className="text-center font-semibold text-[24px] mt-5">@UserName</h1>
                         </div>

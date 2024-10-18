@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from "./components/Footer";
 import UserSignUp from './Pages/UserSignUp';
 import SignLog from './Pages/SignLog';
 import HomePage from './Pages/HomePage';
@@ -8,6 +9,7 @@ import ServicePage from './Pages/ServicePage';
 import Servicesearch from './Pages/ServiceSearch';
 import UserProfile from './Pages/UserProfile';
 import BookingPage from './Pages/BookingPage';
+
 
 function App() {
   return (
@@ -22,9 +24,10 @@ function App() {
         <Route path="/Service" element={<ServicePage />} />
         <Route path="/SearchService" element={<Servicesearch />} />
         <Route path='/UserProfile' element={<UserProfile />} />
-        <Route path='/BookingPage' element={<BookingPage />} />
+        <Route path='/BookingPage' element={<BookingPage />} />       
         
       </Routes>
+      <Footer/>
     </Router>
   );
 }

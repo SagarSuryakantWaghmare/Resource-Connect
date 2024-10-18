@@ -2,13 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
 
 
+
 export default function Navbar() {
   return (
     <>
       <nav className='flex justify-between items-center h-[10vh] border-b-2 w-full font-stdFont px-[3rem]'>
-        <div className="flex  ml-5" id='Logo'>
+        <div className="flex  ml-5 cursor-pointer" id='Logo'>
+          <Link to="/">
           <span className='text-[34px] font-bold mr-2'>Trade</span>
           <span className='text-[34px] font-bold text-color1'>Connect</span>
+          </Link>
+          
         </div>
 
         
