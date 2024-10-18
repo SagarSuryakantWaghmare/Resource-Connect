@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 import { response } from "express";
 import { User } from "../models/user.model.js"
 import { ServiceProvider } from "../models/serviceProvider.js";
+import { JobPost } from "../models/jobPost.model.js";
 
 
 const generateAccessAndRefreshTokens = async (userId) => {
@@ -346,6 +347,33 @@ const searchServiceProvider = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, tradesperson, "Tradesperson fetched successfully"));
 });
 
+const postJob = asyncHandler(async (req, res) => {
+    const { id, jobType, additionalDetails } = req.body;
+    // console.log(`userId: ${req.user._id}, serviceProviderId: ${id}, jobType: ${jobType}, additionalDetails: ${additionalDetails}`);
+    if ([id, req.user._id, jobType, additionalDetails].some((field) => typeof (field) == "" && field?.trim() === "")) {
+        throw new ApiError(400, "All fields are required");
+    }
+
+    const jobPost = await JobPost.create({
+        userId: req.user._id,
+        serviceProviderId: id,
+        jobType,
+        additionalDetails
+    });
+
+    return res
+        .status(201)
+        .json(new ApiResponse(201, jobPost, "Job Posted Successfully"));
+});
+
+const getJobPosts = asyncHandler(async (req, res) => {
+    const jobPosts = await JobPost.find({ userId: req.user._id });
+    // console.log('Job Posts fetched successfully: ', jobPosts.length);
+    return res
+        .status(200)
+        .json(new ApiResponse(200, jobPosts, "Job Posts fetched successfully"));
+});
+
 export {
     registerUser,
     loginUser,
@@ -357,4 +385,6 @@ export {
     updateUserAvatar,
     updateUserCoverImage,
     searchServiceProvider,
+    postJob,
+    getJobPosts
 }
