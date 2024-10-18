@@ -18,6 +18,7 @@ import ServiceProviderProfile from './Pages/serviceProviderProfile';
 import LandingPageSP from './Pages/LandingPageSP';
 import LandingPageAdmin from './Pages/LandingPageAdmin';
 import EditServiceProfile from './Pages/EditProfile';
+import BookJob from "./Pages/BookJob.jsx";
 
 function App() {
 
@@ -43,8 +44,9 @@ function App() {
                 <Route path="/home-service-provider" element={<LandingPageSP />} />
                 <Route path="/home-admin" element={<LandingPageAdmin />} />
                 <Route path="/account/:id" element={<EditServiceProfile />} />
-            </Routes>
-        </Router>
+                <Route path="/book/:id" element={<BookJob />} />
+        </Routes>
+        </Router >
     );
 }
 

@@ -122,7 +122,7 @@ export default function ServiceProviderProfile() {
 
                 <div className='mt-6 flex justify-center gap-4'>
                     <button
-                        onClick={() => navigate('/book')}
+                        onClick={() => navigate('/book/' + serviceProvider?.userId)}
                         className='bg-stdBlue text-white px-4 py-2 rounded-md'
                     >
                         Hire
