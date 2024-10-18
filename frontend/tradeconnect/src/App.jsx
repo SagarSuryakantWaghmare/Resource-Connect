@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -16,10 +16,13 @@ import MyBookings from './Pages/MyBookings';
 import WorkerSignUp from './Pages/WorkerSignUp';
 import ServiceProviderProfile from './Pages/serviceProviderProfile';
 import LandingPageSP from './Pages/LandingPageSP';
+import LandingPageAdmin from './Pages/LandingPageAdmin';
 
 function App() {
+
     return (
         <Router>
+            {/* <Navbar isAuthenticated={isAuthenticated} userTYpe={userType} /> */}
             <Navbar />
             <Routes>
                 {/* Before Login Links are the following */}
@@ -37,6 +40,7 @@ function App() {
                 <Route path="/my-bookings" element={<MyBookings />} />
                 <Route path="/:id/profile" element={<ServiceProviderProfile />} />
                 <Route path="/home-service-provider" element={<LandingPageSP />} />
+                <Route path="/home-admin" element={<LandingPageAdmin />} />
             </Routes>
         </Router>
     );
