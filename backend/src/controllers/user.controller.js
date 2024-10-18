@@ -6,7 +6,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import mongoose from "mongoose";
 import { response } from "express";
 import { User } from "../models/user.model.js"
-import { serviceProvider } from "../models/serviceProvider.js";
+import { ServiceProvider } from "../models/serviceProvider.js";
 
 
 const generateAccessAndRefreshTokens = async (userId) => {
@@ -333,7 +333,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 const searchServiceProvider = asyncHandler(async (req, res) => {
     const { location, profession, experience, rating, availability } = req.body;
 
-    const tradesperson = await serviceProvider.find({
+    const tradesperson = await ServiceProvider.find({
         location: { $regex: location, $options: "i" },
         professions: { $in: profession },
         experience: { $gte: experience },
