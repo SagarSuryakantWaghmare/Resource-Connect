@@ -14,22 +14,18 @@ what are the badges?
 */
 
 const jobPostSchema = mongoose.Schema({
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
     },
-    serviceProvider: {
+    serviceProviderId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "ServiceProvider",
         required: true,
     },
-    job: {
+    jobType: {
         type: String,
-        required: true,
-    },
-    service: {
-        type: [String],
         required: true,
     },
     rating: {
@@ -39,9 +35,8 @@ const jobPostSchema = mongoose.Schema({
         max: 5,
     },
     additionalDetails: {
-        type: Map,
-        of: String,
-        default: {},
+        type: String,
+        trim: true,
     },
     time: {
         type: Date,
@@ -59,5 +54,4 @@ const jobPostSchema = mongoose.Schema({
     }
 }, { timestamps: true });
 
-const JobPost = mongoose.model("JobPost", jobPostSchema);
-module.exports = JobPost;
+export const JobPost = mongoose.model("JobPost", jobPostSchema);
