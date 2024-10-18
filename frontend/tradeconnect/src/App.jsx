@@ -17,7 +17,7 @@ import WorkerSignUp from './Pages/WorkerSignUp';
 import ServiceProviderProfile from './Pages/serviceProviderProfile';
 import LandingPageSP from './Pages/LandingPageSP';
 import LandingPageAdmin from './Pages/LandingPageAdmin';
-import EditServiceProfile from './Pages/EditSerivceProfile';
+import EditServiceProfile from './Pages/EditProfile';
 
 function App() {
 

@@ -59,7 +59,7 @@ export default function EditServiceProfile() {
         setError('');
 
         try {
-            const response = await axios.patch(`/api/v1/service-providers/${id}`, profileData, {
+            const response = await axios.patch(`/api/v1/service-providers/update/${id}`, profileData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${Cookies.get('accessToken')}`

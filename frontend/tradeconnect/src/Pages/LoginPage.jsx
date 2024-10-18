@@ -12,7 +12,7 @@ export default function LoginPage() {
         e.preventDefault();
         setError('');
 
-        axios.post('http://localhost:8000/api/v1/users/login',
+        await axios.post('http://localhost:8000/api/v1/users/login',
             { email, password, },
             { headers: { 'Content-Type': 'application/json', } })
             .then((response) => {

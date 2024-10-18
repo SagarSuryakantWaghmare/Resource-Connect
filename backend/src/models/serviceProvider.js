@@ -79,4 +79,4 @@ serviceProviderSchema.methods.generateAuthToken = function () {
     return token;
 };
 
-export const serviceProvider = mongoose.model('serviceProvider', serviceProviderSchema);
+export const ServiceProvider = mongoose.model('ServiceProvider', serviceProviderSchema);
