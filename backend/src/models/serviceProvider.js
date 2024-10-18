@@ -36,9 +36,8 @@ const serviceProviderSchema = new mongoose.Schema(
             default: true
         },
         additionalDetails: {
-            type: Map,
-            of: String,
-            default: {}
+            type: [String],
+            default: [],
         },
         badges: {
             type: [String],

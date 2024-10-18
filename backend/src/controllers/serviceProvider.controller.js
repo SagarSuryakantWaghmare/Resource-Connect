@@ -22,6 +22,7 @@ const getServiceProviderDetails = asyncHandler(async (req, res) => {
         data = user.toObject();
     } else {
         data = { ...user.toObject(), ...serviceProvider.toObject() }
+        console.log(data);
     }
     return res.status(200).json(new ApiResponse(200, data, "Service Provider details fetched successfully"));
 });

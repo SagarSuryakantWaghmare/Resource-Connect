@@ -13,6 +13,7 @@ export default function ServiceProviderProfile() {
         const fetchServiceProviderDetails = async () => {
             try {
                 const response = await axios.get(`/api/v1/service-providers/${id}`);
+                // console.log("response", response);
                 if (response.status === 200) {
                     setServiceProvider(response.data.data);
                 } else {
@@ -79,7 +80,45 @@ export default function ServiceProviderProfile() {
                 <p className='text-gray-600'>{serviceProvider?.email}</p>
                 <p className='text-gray-600'>{serviceProvider?.contact}</p>
                 <p className='text-gray-600'>{serviceProvider?.city}, {serviceProvider?.state}</p>
-                <p className='text-gray-600'>{serviceProvider?.additionalDetails}</p>
+                {serviceProvider?.additionalDetails ? (
+                    <div className="text-gray-600 mt-4">
+                        <h2 className='text-xl font-bold text-gray-700 mb-2'>Additional Details</h2>
+                        <div className='grid grid-cols-1 w-[fit-content] m-auto sm:grid-cols-3 gap-4'>
+                            {serviceProvider?.additionalDetails.map((detail, index) => (
+                                <div key={index} className={`p-2 w-[fit-content] h-10 rounded-md bg-slate-400 text-white`}>
+                                    {detail}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ) : (<></>)}
+
+                {serviceProvider?.badges ? (
+                    <div className="text-gray-600 mt-4">
+                        <h2 className='text-xl font-bold text-gray-700 mb-2'>Badges</h2>
+                        <div className='grid grid-cols-1 w-[fit-content] m-auto sm:grid-cols-5 gap-4'>
+                            {serviceProvider?.badges.map((detail, index) => (
+                                <div key={index} className={`p-2 w-[fit-content] h-10 rounded-md bg-slate-400 text-white`}>
+                                    {detail}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ) : (<></>)}
+
+                <div className='mt-4'>
+                    <h2 className='text-xl font-bold text-gray-700 mb-2'>Reviews</h2>
+                    {reviews.length > 0 ? (
+                        reviews.map(review => (
+                            <div key={review._id} className='border-b border-gray-300 py-2'>
+                                <p className='text-gray-600'>{review.comment}</p>
+                                <p className='text-gray-500 text-sm'>- {review.user.fullName}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p className='text-gray-600'>No reviews yet.</p>
+                    )}
+                </div>
 
                 <div className='mt-6 flex justify-center gap-4'>
                     <button
@@ -95,19 +134,7 @@ export default function ServiceProviderProfile() {
                         Message
                     </button>
                 </div>
-                <div className='mt-4'>
-                    <h2 className='text-xl font-bold text-gray-700 mb-2'>Reviews</h2>
-                    {reviews.length > 0 ? (
-                        reviews.map(review => (
-                            <div key={review._id} className='border-b border-gray-300 py-2'>
-                                <p className='text-gray-600'>{review.comment}</p>
-                                <p className='text-gray-500 text-sm'>- {review.user.fullName}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p className='text-gray-600'>No reviews yet.</p>
-                    )}
-                </div>
+
             </div>
         </div>
     );
