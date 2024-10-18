@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userType, setUserType] = useState('');
+  const [userId, setUserId] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     if (Cookies.get('accessToken')) setIsAuthenticated(true);
+    if (!Cookies.get('accessToken')) setIsAuthenticated(false);
   }, [navigate]);
 
   const handleLogout = async () => {
@@ -50,6 +52,7 @@ export default function Navbar() {
         if (response.status === 200) {
           setIsAuthenticated(true);
           setUserType(response.data.data.userType);
+          setUserId(response.data.data._id);
         }
       }).catch(error => {
         setIsAuthenticated(false);
@@ -187,7 +190,7 @@ export default function Navbar() {
                   </Link>
                 </>
               )}
-              <Link to="/account">
+              <Link to={`/account/${userId}`}>
                 <button className='text-[14px] font-semibold mr-7 p-1 w-[90px] bg-stdYellow rounded-lg'>
                   Account
                 </button>

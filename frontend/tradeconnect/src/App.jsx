@@ -17,6 +17,7 @@ import WorkerSignUp from './Pages/WorkerSignUp';
 import ServiceProviderProfile from './Pages/serviceProviderProfile';
 import LandingPageSP from './Pages/LandingPageSP';
 import LandingPageAdmin from './Pages/LandingPageAdmin';
+import EditServiceProfile from './Pages/EditSerivceProfile';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/:id/profile" element={<ServiceProviderProfile />} />
                 <Route path="/home-service-provider" element={<LandingPageSP />} />
                 <Route path="/home-admin" element={<LandingPageAdmin />} />
+                <Route path="/account/:id" element={<EditServiceProfile />} />
             </Routes>
         </Router>
     );
