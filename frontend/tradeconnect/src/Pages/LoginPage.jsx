@@ -20,6 +20,7 @@ export default function LoginPage() {
 
                 if (response.status === 200) {
                     document.cookie = `accessToken=${JsonData.data.accessToken}; path=/;`;
+                    // setIsAuthenticated(true);
                     if (JsonData.data.userType === 'user') {
                         navigate('/home');
                     } else if (JsonData.data.userType === 'serviceProvider') {
