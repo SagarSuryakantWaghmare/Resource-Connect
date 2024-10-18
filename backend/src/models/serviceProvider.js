@@ -1,9 +1,15 @@
 import mongoose from 'mongoose';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { User } from "./user.model.js";
 
 const serviceProviderSchema = new mongoose.Schema(
     {
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+        },
         professions: {
             type: [String], // Array of professions
             default: [],
