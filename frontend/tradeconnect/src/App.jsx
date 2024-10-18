@@ -19,6 +19,7 @@ import LandingPageSP from './Pages/LandingPageSP';
 import LandingPageAdmin from './Pages/LandingPageAdmin';
 import EditServiceProfile from './Pages/EditProfile';
 import BookJob from "./Pages/BookJob.jsx";
+import SPJobs from './Pages/sp-jobs.jsx';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
                 <Route path="/home-admin" element={<LandingPageAdmin />} />
                 <Route path="/account/:id" element={<EditServiceProfile />} />
                 <Route path="/book/:id" element={<BookJob />} />
+                <Route path="/my-jobs" element={<SPJobs />} />
         </Routes>
         </Router >
     );

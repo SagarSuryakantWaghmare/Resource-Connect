@@ -10,7 +10,8 @@ import {
     updateUserAvatar,
     updateUserCoverImage,
     postJob,
-    getJobPosts
+    getJobPosts,
+    getJobPostsForSP
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js";
@@ -38,5 +39,6 @@ router.route("/avatar").patch(verifyJWT, upload.single("avatar"), updateUserAvat
 router.route("/cover-image").patch(verifyJWT, upload.single("coverImage"), updateUserCoverImage);
 router.route("/job-post").post(verifyJWT, postJob);
 router.route("/get-job-posts").get(verifyJWT, getJobPosts);
+router.route("/get-job-posts-for-sp").get(verifyJWT, getJobPostsForSP);
 
 export default router;

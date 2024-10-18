@@ -374,6 +374,14 @@ const getJobPosts = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, jobPosts, "Job Posts fetched successfully"));
 });
 
+const getJobPostsForSP = asyncHandler(async (req, res) => {
+    const jobPosts = await JobPost.find({ serviceProviderId: req.user._id });
+    // console.log('Job Posts fetched successfully: ', jobPosts.length);
+    return res
+        .status(200)
+        .json(new ApiResponse(200, jobPosts, "Job Posts fetched successfully"));
+});
+
 export {
     registerUser,
     loginUser,
@@ -386,5 +394,6 @@ export {
     updateUserCoverImage,
     searchServiceProvider,
     postJob,
-    getJobPosts
+    getJobPosts,
+    getJobPostsForSP
 }
