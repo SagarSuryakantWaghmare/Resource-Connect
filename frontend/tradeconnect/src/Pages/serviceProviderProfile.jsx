@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function ServiceProviderProfile() {
@@ -7,6 +7,7 @@ export default function ServiceProviderProfile() {
     const [serviceProvider, setServiceProvider] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchServiceProviderDetails = async () => {
@@ -35,48 +36,76 @@ export default function ServiceProviderProfile() {
             }
         };
 
-        const fetchData = async () => {
-            setLoading(true);
-            await fetchServiceProviderDetails();
-            await fetchReviews();
-            setLoading(false);
-        };
-
-        fetchData();
+        fetchServiceProviderDetails();
+        fetchReviews();
+        setLoading(false);
     }, [id]);
 
     if (loading) {
         return <div>Loading...</div>;
     }
 
-    if (!serviceProvider) {
-        return <div>Service provider not found</div>;
-    }
+    const getInitials = (name) => {
+        const names = name.split(' ');
+        const initials = names.map(n => n[0]).join('');
+        return initials.toUpperCase();
+    };
+
+    const getRandomGradient = () => {
+        const gradients = [
+            'bg-gradient-to-r from-gray-700 to-gray-900',
+            'bg-gradient-to-r from-gray-800 to-gray-600',
+            'bg-gradient-to-r from-gray-900 to-gray-700',
+        ];
+        return gradients[Math.floor(Math.random() * gradients.length)];
+    };
 
     return (
-        <div className='bg-stdBg flex items-center justify-center min-h-screen font-stdFont p-4'>
-            <div className="rounded-2xl w-full max-w-[800px] text-center bg-white p-6">
-                <div className='cover-image h-48 w-full bg-gray-300 rounded-t-md mb-4'></div>
-                <div className='avatar mx-auto h-24 w-24 rounded-full border-4 border-white bg-gray-200 mb-4'></div>
-                <h1 className='text-3xl font-bold text-stdYellow'>{serviceProvider.fullName}</h1>
-                <p className='text-xl'>{serviceProvider.businessName}</p>
-                <p className='text-sm text-gray-600'>{serviceProvider.email}</p>
-                <p className='text-sm text-gray-600'>{serviceProvider.contact}</p>
-                <p className='text-sm text-gray-600'>{serviceProvider.address}</p>
+        <div className='bg-gray-100 flex flex-col items-center justify-center min-h-screen font-sans p-4'>
+            <div className="rounded-lg w-full max-w-[800px] text-center bg-white p-6 shadow-md">
+                <h1 className='text-2xl font-bold text-gray-700 mb-4'>{serviceProvider?.fullName}</h1>
+                {serviceProvider?.avatar ? (
+                    <img
+                        src={serviceProvider.avatar}
+                        alt={`${serviceProvider.fullName}'s avatar`}
+                        className='w-24 h-24 rounded-full mx-auto mb-4'
+                    />
+                ) : (
+                    <div className={`w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold ${getRandomGradient()}`}>
+                        {getInitials(serviceProvider?.fullName || '')}
+                    </div>
+                )}
+                <p className='text-gray-600'>{serviceProvider?.businessName}</p>
+                <p className='text-gray-600'>{serviceProvider?.email}</p>
+                <p className='text-gray-600'>{serviceProvider?.contact}</p>
+                <p className='text-gray-600'>{serviceProvider?.city}, {serviceProvider?.state}</p>
+                <p className='text-gray-600'>{serviceProvider?.additionalDetails}</p>
+
+                <div className='mt-6 flex justify-center gap-4'>
+                    <button
+                        onClick={() => navigate('/book')}
+                        className='bg-stdBlue text-white px-4 py-2 rounded-md'
+                    >
+                        Hire
+                    </button>
+                    <button
+                        onClick={() => navigate('/message')}
+                        className='bg-stdYellow text-white px-4 py-2 rounded-md'
+                    >
+                        Message
+                    </button>
+                </div>
                 <div className='mt-4'>
-                    <h2 className='text-2xl font-bold'>Reviews</h2>
+                    <h2 className='text-xl font-bold text-gray-700 mb-2'>Reviews</h2>
                     {reviews.length > 0 ? (
-                        <ul className='mt-2'>
-                            {reviews.map((review, index) => (
-                                <li key={index} className='border p-4 rounded-md mb-2'>
-                                    <p className='text-lg font-bold'>{review.reviewerName}</p>
-                                    <p className='text-sm text-gray-600'>{review.comment}</p>
-                                    <p className='text-sm text-gray-600'>Rating: {review.rating}</p>
-                                </li>
-                            ))}
-                        </ul>
+                        reviews.map(review => (
+                            <div key={review._id} className='border-b border-gray-300 py-2'>
+                                <p className='text-gray-600'>{review.comment}</p>
+                                <p className='text-gray-500 text-sm'>- {review.user.fullName}</p>
+                            </div>
+                        ))
                     ) : (
-                        <p>No reviews available</p>
+                        <p className='text-gray-600'>No reviews yet.</p>
                     )}
                 </div>
             </div>

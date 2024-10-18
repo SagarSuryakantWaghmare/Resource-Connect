@@ -95,7 +95,7 @@ export default function Navbar() {
               {userType === 'user' && (
                 <>
                   <Link to="/home" className='text-[18px] font-semibold'>
-                    Book
+                    Home
                   </Link>
                   <Link to="/my-bookings" className='text-[18px] font-semibold'>
                     My Bookings
