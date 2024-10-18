@@ -7,10 +7,10 @@ export default function UserSignUp() {
             <div className='flex items-center justify-center min-h-screen font-stdFont bg-stdBg p-5'>
                 <div className=' rounded-2xl w-full max-w-[420px] h-auto md:h-[65%] text-center bg-white pb-5'>
                     <div id="logo" className='mt-3'>
-                        <div className='text-secondaryFont font-bold text-left ml-2'>
+                        {/* <div className='text-secondaryFont font-bold text-left ml-2'>
                             <button className='bg-stdYellow p-0.5 rounded-l-md text-stdBlue'>Trade</button>
                             <button className='bg-stdBlue p-0.5 rounded-r-md text-stdYellow'>Connect</button>
-                        </div>
+                        </div> */}
                         <h1 className='text-3xl md:text-4xl font-bold text-stdBlue mt-2'>Registration</h1>
                     </div>
                     <div id="inputField" className='flex flex-col gap-3 items-center  text-secondaryFont mt-4'>
