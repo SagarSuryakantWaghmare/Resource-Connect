@@ -18,9 +18,6 @@ export default function EditServiceProfile() {
         professions: '', // user select tag to select from the following: ['plumber', 'electrician', 'handyman', 'mover', 'cleaning', 'painting']
         experience: '', // minimum allowed is 0 years
         location: '',
-        minHourlyRate: '',
-        maxHourlyRate: '',
-        rating: '', // between 0 to 5
         availability: '', // true or false
         additionalDetails: '', // description
         badges: '' // from the following: ["elite", "pro", "verified", "featured", "top-rated", "new", "experienced", "local", "remote", "onsite", "online", "emergency", "24x7", "discount", "free-consultation", "free-quote", "free-visit", "free-trial", "free-estimate", "free-delivery", "free-shipping", "free-installation", "free-setup", "free-repair", "free-replacement", "free-maintenance", "free-support", "free-upgrade", "free-training", "free-consultation", "free-advice", "free-counseling", "free-coaching", "free"]
@@ -33,8 +30,7 @@ export default function EditServiceProfile() {
     useEffect(() => {
         const fetchProfileData = async () => {
             try {
-                // const response = await axios.get(`/api/v1/service-providers/${id}`);
-                const response = await axios.get(`/api/v1/users/current-user`, {
+                const response = await axios.get(`/api/v1/service-providers/${id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${Cookies.get('accessToken')}`
@@ -78,8 +74,9 @@ export default function EditServiceProfile() {
             Object.keys(profileData).forEach(key => {
                 formData.append(key, profileData[key]);
             });
+            console.log('Profile Data:', profileData);
 
-            const response = await axios.patch(`/api/v1/service-providers/update/${id}`, formData, {
+            const response = await axios.patch(`/api/v1/save-sp-details`, formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data'
@@ -87,7 +84,7 @@ export default function EditServiceProfile() {
             });
 
             if (response.status === 200) {
-                navigate(`/service-provider/${id}/profile`);
+                navigate(`/home-service-provider`);
             } else {
                 setError('Failed to update profile');
             }
@@ -218,32 +215,6 @@ export default function EditServiceProfile() {
                                 value={profileData.location}
                                 onChange={handleInputChange}
                                 placeholder="Location"
-                                className='w-full p-2 border border-gray-300 rounded-md'
-                            />
-                            <input
-                                type="number"
-                                name="minHourlyRate"
-                                value={profileData.minHourlyRate}
-                                onChange={handleInputChange}
-                                placeholder="Min Hourly Rate"
-                                className='w-full p-2 border border-gray-300 rounded-md'
-                            />
-                            <input
-                                type="number"
-                                name="maxHourlyRate"
-                                value={profileData.maxHourlyRate}
-                                onChange={handleInputChange}
-                                placeholder="Max Hourly Rate"
-                                className='w-full p-2 border border-gray-300 rounded-md'
-                            />
-                            <input
-                                type="number"
-                                name="rating"
-                                value={profileData.rating}
-                                onChange={handleInputChange}
-                                placeholder="Rating (0 to 5)"
-                                min="0"
-                                max="5"
                                 className='w-full p-2 border border-gray-300 rounded-md'
                             />
                             <select

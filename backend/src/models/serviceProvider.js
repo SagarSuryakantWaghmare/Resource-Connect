@@ -5,9 +5,9 @@ import { User } from "./user.model.js";
 
 const serviceProviderSchema = new mongoose.Schema(
     {
-        user: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
+            ref: User,
             required: true
         },
         professions: {
@@ -24,14 +24,6 @@ const serviceProviderSchema = new mongoose.Schema(
         location: {
             type: String,
             required: true
-        },
-        minHourlyRate: {
-            type: Number,
-            required: true,
-        },
-        maxHourlyRate: {
-            type: Number,
-            required: true,
         },
         rating: {
             type: Number,

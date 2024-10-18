@@ -15,11 +15,15 @@ const getServiceProviderByCity = asyncHandler(async (req, res) => {
 // Controller for fetching service provider details
 const getServiceProviderDetails = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const serviceProvider = await User.findById(id);
-    if (!serviceProvider) {
-        throw new ApiError(404, "Service Provider not found");
+    const user = await User.findById(id);
+    const serviceProvider = await ServiceProvider.findOne({ userId: id });
+    let data = {};
+    if (serviceProvider == null) {
+        data = user.toObject();
+    } else {
+        data = { ...user.toObject(), ...serviceProvider.toObject() }
     }
-    return res.status(200).json(new ApiResponse(200, serviceProvider, "Service Provider details fetched successfully"));
+    return res.status(200).json(new ApiResponse(200, data, "Service Provider details fetched successfully"));
 });
 
 // Controller for fetching service provider reviews
@@ -32,12 +36,86 @@ const getServiceProviderReviews = asyncHandler(async (req, res) => {
 // Controller for updating service provider profile
 const updateServiceProviderProfile = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const updateData = req.body;
-    const serviceProvider = await User.findByIdAndUpdate(id, updateData, { new: true });
-    if (!serviceProvider) {
-        throw new ApiError(404, "Service Provider not found");
+    const { professions, experience, location, availability, additionalDetails, badges } = req.body
+    const { fullName, email, contact, city, state, zipcode } = req.body;
+
+    if ([fullName, email, contact, zipcode, state, city, professions, experience, location, availability, additionalDetails, badges].some((field) => typeof field === 'string' && field.trim() === "")) {
+        throw new ApiError(400, "All fields are required")
     }
-    return res.status(200).json(new ApiResponse(200, serviceProvider, "Service Provider profile updated successfully"));
+
+    const serviceProvider = await ServiceProvider.findOneAndUpdate(
+        req.user?._id,
+        {
+            $set: {
+                professions,
+                experience,
+                location,
+                availability,
+                additionalDetails,
+                badges,
+            }
+        },
+        { new: true }
+
+    );
+
+    const user = await User.findOneAndUpdate(
+        req.user?._id,
+        {
+            $set: {
+                fullName,
+                email,
+                contact,
+                city,
+                state,
+                zipcode,
+            }
+        }
+    ).select("-password");
+
+    const data = { ...user.toObject(), ...serviceProvider.toObject() };
+
+    return res.status(200).json(new ApiResponse(200, data, "Service Provider profile updated successfully"));
 });
 
-export { getServiceProviderByCity, getServiceProviderDetails, getServiceProviderReviews, updateServiceProviderProfile };
+const registerSP = asyncHandler(async (req, res) => {
+
+    const { professions, experience, location, availability, additionalDetails, badges } = req.body
+    const { fullName, email, contact, city, state, zipcode, avatar, coverImage } = req.body;
+    // console.log('Body', req.body); // console.log('User', req.user);
+
+    if ([professions, experience, location, availability, additionalDetails, badges].some((field) => typeof field === 'string' && field.trim() === "")) {
+        throw new ApiError(400, "All fields are required")
+    }
+
+    const sp = await ServiceProvider.create({
+        userId: req.user._id,
+        professions,
+        experience,
+        location,
+        availability,
+        additionalDetails,
+        badges
+    })
+
+    const createdSP = await User.findById(sp.userId);
+    if (!createdSP) {
+        throw new ApiError(400, "Service Provider Data Saving Failed");
+    }
+
+    const response = res.status(201).json(
+        new ApiResponse(200, createdSP, "Service Provider Data saved successfully")
+    );
+    console.log('SP registered Successfully');
+
+    return response;
+
+});
+
+export {
+    getServiceProviderByCity,
+    getServiceProviderDetails,
+    getServiceProviderReviews,
+    updateServiceProviderProfile,
+    registerSP
+};

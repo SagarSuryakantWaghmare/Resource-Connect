@@ -116,33 +116,7 @@ export default function LandingPageUser() {
             </div>
 
             <div className="rounded-2xl w-full md:h-[65%] h-auto text-center bg-white p-6">
-
-                <div className='mt-4'>
-                    <h2 className='text-2xl font-bold'>Job Requests in your area:</h2>
-                    <ul className='grid grid-cols-2 gap-8 justify-items-center'>
-                        {serviceProviders.map((provider, index) => (
-                            <li key={index} className='mt-4 min-w-[520px]'>
-                                <div className='border p-4 rounded-md relative'>
-                                    <div className='cover-image h-32 w-full bg-gray-300 rounded-t-md'></div>
-                                    <div className='avatar absolute top-16 left-4 h-24 w-24 rounded-full border-4 border-white bg-gray-200'></div>
-                                    <div className='m-4'>
-                                        <h3 className='text-xl font-bold'>{provider.fullName}</h3>
-                                        <p className='text-lg'>{provider.businessName}</p>
-                                        <p className='text-sm text-gray-600'>{provider.email}</p>
-                                        <div className='flex gap-4 mt-4 justify-center'>
-                                            <Link to={`/${provider._id}/profile`}>
-                                                <button className='bg-stdBlue text-white px-4 py-2 rounded-md'>Profile</button>
-                                            </Link>
-                                            <Link to={`/${provider._id}/message`}>
-                                                <button className='bg-stdYellow text-stdBlue px-4 py-2 rounded-md'>Message</button>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                
             </div>
 
 
