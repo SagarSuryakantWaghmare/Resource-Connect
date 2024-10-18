@@ -1,31 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import UserSignUp from './Pages/UserSignUp';
-import SignLog from './Pages/SignLog';
-import HomePage from './Pages/HomePage';
-import LoginPage from './Pages/LoginPage';
-import ServicePage from './Pages/ServicePage';
-import Servicesearch from './Pages/ServiceSearch';
-import UserProfile from './Pages/UserProfile';
-import LandingPageUser from './Pages/'
 
-function App() {
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
+import React from 'react';
+import Dashboard from './Pages/DashBoard.jsx'; // Adjust the path if necessary
+import Navbar from './components/Navbar.jsx'
 
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<UserSignUp />} />
-        <Route path="/signlog" element={<SignLog />} />
-        <Route path="/Service" element={<ServicePage />} />
-        <Route path="/SearchService" element={<Servicesearch />} />
-        <Route path='/UserProfile' element={<UserProfile />} />
-        
-      </Routes>
-    </Router>
-  );
-}
+const App = () => {
+    return (
+        <>
+        <div>
+
+            <Dashboard /> {/* Ensure this is the correct component */}
+            {/* Other components can be added here */}
+        </div>
+        </>
+    );
+};
 
 export default App;
+
