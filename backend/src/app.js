@@ -30,10 +30,8 @@ import userRouter from './routes/user.routes.js'
 import serviceProviderRouter from './routes/serviceProvider.routes.js'
 
 
-//routes declaration for user
+//routes declaration
 app.use("/api/v1/users", userRouter)
-
-//routes declaration for service provider
 app.use("/api/v1/service-providers", serviceProviderRouter)
 
 export { app }

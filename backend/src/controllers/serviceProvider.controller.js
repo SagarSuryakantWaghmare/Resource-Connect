@@ -13,7 +13,8 @@ const getServiceProviderByCity = asyncHandler(async (req, res) => {
 
 const getServiceProviderDetails = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const serviceProvider = await User.findById(id).populate('serviceProviderDetails');
+    // const serviceProvider = await User.findById(id).populate('serviceProviderDetails');
+    const serviceProvider = await User.findById(id);
     if (!serviceProvider) {
         throw new ApiError(404, "Service Provider not found");
     }
