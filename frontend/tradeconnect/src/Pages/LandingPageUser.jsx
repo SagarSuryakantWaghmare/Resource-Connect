@@ -44,7 +44,6 @@ export default function LandingPageUser() {
                 const response = await axios.get(`/api/v1/service-providers/get-by-city?city=${city}`, {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${Cookies.get('accessToken')}`,
                     }
                 });
                 if (response.status === 200) {

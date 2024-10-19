@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { FaUserCircle } from "react-icons/fa";
 
 export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -73,13 +74,13 @@ export default function Navbar() {
   return (
     <nav className='flex justify-between items-center h-[70px] border-b-2 px-5 w-full font-stdFont bg-white shadow-md'>
       <Link to={getHomeLink()}>
-        <div className="flex items-center space-x-0" id='Logo'>
-          <button className='h-[40px] w-[80px] rounded-l-lg text-[18px] font-bold bg-stdYellow text-stdBlue'>
+        <div className="flex ml-5" id='Logo'>
+          <span className='text-[34px] font-bold mr-2 bg-Btn-color2 h-[40px] w-[110px] rounded-l-lg text-stdYellow pl-3'>
             Trade
-          </button>
-          <button className='h-[40px] w-[90px] rounded-r-lg text-[18px] font-bold bg-stdBlue text-stdYellow'>
+          </span>
+          <span className='text-[34px] font-bold text-color1 bg-Btn-color1 h-[40px] w-[90px] rounded-r-lg text-stdBlue'>
             Connect
-          </button>
+          </span>
         </div>
       </Link>
 
@@ -89,6 +90,7 @@ export default function Navbar() {
             {userType === 'user' && (
               <>
                 <Link to="/home" className='text-[18px] font-semibold hover:text-stdBlue transition'>Home</Link>
+                <Link to="/BookingPage" className='text-[18px] font-semibold hover:text-stdBlue transition'>Bookings</Link>
                 <Link to="/my-bookings" className='text-[18px] font-semibold hover:text-stdBlue transition'>My Bookings</Link>
                 <Link to="/chat" className='text-[18px] font-semibold hover:text-stdBlue transition'>Chat</Link>
               </>
@@ -108,9 +110,12 @@ export default function Navbar() {
               </>
             )}
             <Link to={`/account/${userId}`}>
-              <button className='text-[14px] font-semibold p-2 bg-stdYellow text-stdBlue rounded-lg hover:bg-yellow hover:text-white transition'>
+              <button className='text-[14px] font-semibold p-2 bg-stdYellow text-white rounded-lg hover:bg-yellow hover:text-white transition'>
                 Account
               </button>
+            </Link>
+            <Link to="/user-dashboard" className='text-[24px] text-stdBlue'>
+              <FaUserCircle />
             </Link>
             <button
               onClick={handleLogout}
@@ -128,7 +133,7 @@ export default function Navbar() {
             </Link>
             <Link to="/services" className='text-[18px] font-semibold hover:text-stdBlue transition'>Service</Link>
             <Link to="/signlog">
-              <button className='text-[18px] font-semibold p-2 bg-stdYellow text-stdBlue rounded-lg hover:bg-stdBlue hover:text-stdYellow transition'>
+              <button className='text-[18px] font-semibold p-2 bg-stdYellow text-white rounded-lg hover:bg-stdBlue hover:text-stdYellow transition'>
                 Sign Up
               </button>
             </Link>

@@ -1,50 +1,52 @@
-import React from "react";
+// import React from 'react'
 
-export default function Footer() {
+function Footer() {
     return (
-        <>
-
-            <footer className="bg-gray-100 font-poppins">
-                <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-
-                    <div className="flex justify-center">
-                        <div className="logo flex  ml-5">
-                            <button className='bg-Btn-color2  h-[40px] w-[80px] rounded-l-lg text-[18px] font-bold text-Btn-color1 pl-5'>Trade</button>
-                            <button className='bg-Btn-color1  h-[40px] w-[90px] rounded-r-lg  text-[18px] font-bold text-Btn-color2 pr-5 '>Connect</button>
-                        </div>
-                    </div>
-
-                    <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa cum
-                        itaque neque.
-                    </p>
-
-                    <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
-                        <li>
-                            <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> About </a>
-                        </li>
-
-                        <li>
-                            <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Careers </a>
-                        </li>
-
-                        <li>
-                            <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> History </a>
-                        </li>
-
-                        <li>
-                            <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Services </a>
-                        </li>
-
-                        <li>
-                            <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Projects </a>
-                        </li>
-
-                    </ul>
-
+      <>
+        <div className="h-[250px] w-full pt-5  bg-gray-700 mt-10 ">
+          <div className=" flex justify-around">
+            <div className="h-[200px] w-[200px] rounded-2xl bg-black  ">
+              <div className="h-[150px] text-white font-bold text-4xl flex flex-col justify-center items-center text-center">
+                <h1>Trade</h1>
+                <h1>Connect</h1>
+  
+              </div>
+              <div className="h-[50px] bg-white rounded-b-2xl flex justify-center  text-center items-center ">
+                <h1 className="text-color1 ml-2 font-bold">Connecting Skills with Opportunities.</h1>
+  
+              </div>
+  
+  
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-white ">Quick Links</h1>
+              <div className="flex justify-center flex-col  text-lg text-white font-semibold ">
+                <h1 className="mt-2">Home</h1>
+                <h1>About us</h1>
+                <h1>Services</h1>
+                <h1>Login</h1>
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <h1 className="text-2xl font-bold text-white text-center">Contact us</h1>
+              <div className="mt-3">
+                <div className="flex  gap-5 text-lg text-white font-semibold" >
+                  <i class="fa-solid fa-envelope"></i>
+                  <h1> tradeconnect@gmail.com</h1>
                 </div>
-            </footer>
-
-        </>
+                <h1 className="text-lg text-white font-semibold"><i className="fa-solid fa-phone mr-3"></i> <span>+91 1800 130 200 </span></h1>
+                <h1 className="text-lg text-white font-semibold"><i className="fa-brands fa-youtube mr-3"></i><span>www.TradeConnect.youtube.com</span></h1>
+  
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </>
     )
-}
+  }
+  
+  export default Footer

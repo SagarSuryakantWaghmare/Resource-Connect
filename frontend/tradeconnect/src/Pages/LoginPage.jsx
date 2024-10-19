@@ -78,7 +78,7 @@ export default function LoginPage() {
                         <a href="#">Forgot Password?</a>
                     </p>
                     <div className="mt-5">
-                        <button type='submit' className='h-[45px] w-[120px] bg-stdBlue rounded-full text-[18px] font-bold text-stdYellow'>
+                        <button type='submit' className='h-[45px] w-[120px] bg-btnColor rounded-full text-[18px] font-bold text-white'>
                             Login
                         </button>
                     </div>
