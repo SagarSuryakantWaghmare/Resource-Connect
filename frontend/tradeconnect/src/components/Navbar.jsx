@@ -78,7 +78,7 @@ export default function Navbar() {
           <span className='text-[34px] font-bold mr-2 bg-Btn-color2 h-[40px] w-[110px] rounded-l-lg text-stdYellow pl-3'>
             Trade
           </span>
-          <span className='text-[34px] font-bold text-color1 bg-Btn-color1 h-[40px] w-[90px] rounded-r-lg text-stdBlue'>
+          <span className='text-[34px] font-bold bg-Btn-color1 h-[40px] w-[90px] rounded-r-lg text-stdBlue'>
             Connect
           </span>
         </div>
