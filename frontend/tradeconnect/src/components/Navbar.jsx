@@ -62,9 +62,9 @@ export default function Navbar() {
       case 'user':
         return '/home';
       case 'serviceProvider':
-        return '/home-service-provider';
+        return '/dashboard';
       case 'admin':
-        return '/home-admin';
+        return '/dashboard-admin';
       default:
         return '/';
     }
@@ -95,14 +95,14 @@ export default function Navbar() {
             )}
             {userType === 'serviceProvider' && (
               <>
-                <Link to="/home-service-provider" className='text-[18px] font-semibold hover:text-stdBlue transition'>Dashboard</Link>
+                <Link to="/dashboard" className='text-[18px] font-semibold hover:text-stdBlue transition'>Dashboard</Link>
                 <Link to="/my-jobs" className='text-[18px] font-semibold hover:text-stdBlue transition'>My Jobs</Link>
                 <Link to="/chat" className='text-[18px] font-semibold hover:text-stdBlue transition'>Chat</Link>
               </>
             )}
             {userType === 'admin' && (
               <>
-                <Link to="/home-admin" className='text-[18px] font-semibold hover:text-stdBlue transition'>Admin Dashboard</Link>
+                <Link to="/dashboard-admin" className='text-[18px] font-semibold hover:text-stdBlue transition'>Admin Dashboard</Link>
                 <Link to="/manage-users" className='text-[18px] font-semibold hover:text-stdBlue transition'>Manage Users</Link>
                 <Link to="/manage-services" className='text-[18px] font-semibold hover:text-stdBlue transition'>Manage Services</Link>
               </>

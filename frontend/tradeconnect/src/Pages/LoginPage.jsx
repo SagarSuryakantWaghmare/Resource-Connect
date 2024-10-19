@@ -24,9 +24,9 @@ export default function LoginPage() {
                     if (JsonData.data.userType === 'user') {
                         navigate('/home');
                     } else if (JsonData.data.userType === 'serviceProvider') {
-                        navigate('/home-service-provider');
+                        navigate('/dashboard');
                     } else if (JsonData.data.userType === 'admin') {
-                        navigate('/home-admin');
+                        navigate('/dashboard-admin');
                     } else {
                         setError('Login failed');
                     }

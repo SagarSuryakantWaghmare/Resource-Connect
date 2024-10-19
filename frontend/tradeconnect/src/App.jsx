@@ -42,12 +42,12 @@ function App() {
                 <Route path="/chat" element={<ChatPage />} />
                 <Route path="/my-bookings" element={<MyBookings />} />
                 <Route path="/:id/profile" element={<ServiceProviderProfile />} />
-                <Route path="/home-service-provider" element={<LandingPageSP />} />
-                <Route path="/home-admin" element={<LandingPageAdmin />} />
+                <Route path="/dashboard" element={<LandingPageSP />} /> {/* Service Provider Landing Page */}
+                <Route path="/dashboard-admin" element={<LandingPageAdmin />} /> {/* Admin Landing Page */}
                 <Route path="/account/:id" element={<EditServiceProfile />} />
                 <Route path="/book/:id" element={<BookJob />} />
                 <Route path="/my-jobs" element={<SPJobs />} />
-        </Routes>
+            </Routes>
         </Router >
     );
 }

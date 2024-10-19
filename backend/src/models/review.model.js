@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const reviewSchema = new mongoose.Schema({
-    tradesperson: {
+    serviceProviderId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Tradesperson",
+        ref: "ServiceProvider",
         required: true
     },
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
@@ -20,10 +20,6 @@ const reviewSchema = new mongoose.Schema({
     reviewDescription: {
         type: String,
         required: true
-    },
-    isApproved: {
-        type: Boolean,
-        default: false
     }
 }, { timestamps: true });
 

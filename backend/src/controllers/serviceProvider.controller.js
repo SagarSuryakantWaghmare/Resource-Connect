@@ -89,16 +89,29 @@ const registerSP = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All fields are required")
     }
 
-    const sp = await ServiceProvider.create({
-        userId: req.user._id,
-        professions,
-        experience,
-        location,
-        availability,
-        additionalDetails,
-        badges
-    })
-
+    const user = await ServiceProvider.findById(req.user._id);
+    if (!user) {
+        const sp = await ServiceProvider.create({
+            userId: req.user._id,
+            professions,
+            experience,
+            location,
+            availability,
+            additionalDetails,
+            badges
+        })
+    } else {
+        const sp = await ServiceProvider.findOneAndUpdate(req.user._id, {
+            $set: {
+                professions,
+                experience,
+                location,
+                availability,
+                additionalDetails,
+                badges
+            }
+        })
+    }
     const createdSP = await User.findById(sp.userId);
     if (!createdSP) {
         throw new ApiError(400, "Service Provider Data Saving Failed");
@@ -113,10 +126,31 @@ const registerSP = asyncHandler(async (req, res) => {
 
 });
 
+const setReview = asyncHandler(async (req, res) => {
+    const { serviceProviderId, rating, reviewDescription } = req.body;
+    const review = await Review.create({
+        serviceProviderId,
+        userId: req.user._id,
+        rating,
+        reviewDescription
+    });
+    console.log('Review saved successfully');
+    return res.status(201).json(new ApiResponse(201, review, "Review saved successfully"));
+})
+
+const getReviews = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const reviews = await Review.find({ serviceProviderId: id }).populate('userId', 'fullName');
+    console.log('Reviews fetched successfully');
+    return res.status(200).json(new ApiResponse(200, reviews, "Reviews fetched successfully"));
+})
+
 export {
     getServiceProviderByCity,
     getServiceProviderDetails,
     getServiceProviderReviews,
     updateServiceProviderProfile,
-    registerSP
+    registerSP,
+    setReview,
+    getReviews,
 };

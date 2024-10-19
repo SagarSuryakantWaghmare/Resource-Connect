@@ -11,7 +11,7 @@ import {
     updateUserCoverImage,
     postJob,
     getJobPosts,
-    getJobPostsForSP
+    getJobPostsForSP,
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js";

@@ -4,7 +4,9 @@ import {
     getServiceProviderDetails,
     getServiceProviderReviews,
     updateServiceProviderProfile,
-    registerSP
+    registerSP,
+    getReviews,
+    setReview
 } from "../controllers/serviceProvider.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -16,5 +18,7 @@ router.route("/get-by-city").get(verifyJWT, getServiceProviderByCity);
 router.route("/:id").get(verifyJWT, getServiceProviderDetails);
 router.route("/:id/reviews").get(verifyJWT, getServiceProviderReviews);
 router.route("/update/:id").patch(verifyJWT, updateServiceProviderProfile);
+router.route("/set-sp-review").post(verifyJWT, setReview);
+router.route("/get-reviews/:id").get(verifyJWT, getReviews);
 
 export default router;
