@@ -9,7 +9,7 @@ import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
 import Services from './Pages/Services';
 import Dashboard from './Pages/Dashboard'; // Import the Dashboard component
-
+import Footer from './components/Footer.jsx';
 function App() {
   return (
     <Router>
@@ -22,6 +22,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/dashboard" element={<Dashboard />} /> {/* Add the new Dashboard route */}
       </Routes>
+      <Footer/>
     </Router>
   );
 }
