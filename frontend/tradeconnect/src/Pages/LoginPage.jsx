@@ -32,7 +32,7 @@ export default function LoginPage() {
                         <Link href="#">Forgot Password?</Link>
                     </p>
                     <div className="mt-5">
-                        <Link to="/UserProfile">
+                        <Link to="/">
                             <button className='h-[45px] w-[120px] bg-stdBlue rounded-full text-[18px] font-bold text-white'>
                                 Login
                             </button>

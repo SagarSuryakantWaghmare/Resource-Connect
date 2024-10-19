@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ProfileReview from "../components/ProfileReview";
 import ProfilePhoto from "../components/Assets/profileImage.jpg"
 
@@ -73,7 +74,10 @@ export default function UserProfile(props) {
 
                             <div className="flex gap-7 mt-8">
                                 <button className="w-[150px] h-[40px] bg-color1 rounded-3xl text-[18px] text-white font-semibold">Hire Me</button>
-                                <button className="w-[150px] h-[40px] bg-btnColor rounded-3xl text-[18px] text-white font-semibold">Let’s Connect</button>
+                                <Link  to="/ProfileAdmin">
+                                    <button className="w-[150px] h-[40px] bg-btnColor rounded-3xl text-[18px] text-white font-semibold">Let’s Connect</button>
+                                </Link>
+                               
                             </div>
                         </div>
                     </div>

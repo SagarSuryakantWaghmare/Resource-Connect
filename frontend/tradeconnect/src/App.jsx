@@ -9,6 +9,7 @@ import ServicePage from './Pages/ServicePage';
 import Servicesearch from './Pages/ServiceSearch';
 import UserProfile from './Pages/UserProfile';
 import BookingPage from './Pages/BookingPage';
+import ProfileAdmin from './Pages/ProfileAdmin';
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
         <Route path="/Service" element={<ServicePage />} />
         <Route path="/SearchService" element={<Servicesearch />} />
         <Route path='/UserProfile' element={<UserProfile />} />
-        <Route path='/BookingPage' element={<BookingPage />} />       
+        <Route path='/BookingPage' element={<BookingPage />} />   
+        <Route path='/ProfileAdmin' element={<ProfileAdmin/>} />  
         
       </Routes>
       <Footer/>

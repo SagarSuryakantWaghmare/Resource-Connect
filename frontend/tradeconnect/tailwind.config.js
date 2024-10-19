@@ -25,7 +25,8 @@ export default {
          "Completedchat":"#000836",
          "bgCompleted":"#EDE8DC",
          "Pendingbg":"#D9D9D9",
-         "trackBar":"#399918"
+         "trackBar":"#399918",
+         "hoverEffect":"#FFB69F"
         
       },
       fontFamily:{
