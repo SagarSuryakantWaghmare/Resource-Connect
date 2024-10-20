@@ -46,7 +46,7 @@ export default function WorkerSignUp() {
     return (
         <div className='bg-stdBg flex items-center justify-center min-h-screen font-stdFont p-4'>
             <div className="rounded-2xl w-full max-w-[450px] md:h-[65%] h-auto text-center bg-white p-6">
-                <h1 className='text-3xl md:text-4xl font-bold text-stdBlue'>Register</h1>
+                <h1 className='text-3xl md:text-4xl font-bold text-stdBlue'>Register as a Service Provider</h1>
                 <form onSubmit={handleSubmit} className='mt-4'>
                     <input
                         type="text"
@@ -128,7 +128,7 @@ export default function WorkerSignUp() {
                             By signing up you agree to our <span className='font-bold text-stdBlue'>Terms of Use</span> and <span className='font-bold text-stdBlue'>Privacy Policy.</span>
                         </p>
                     </div>
-                    <button type="submit" className='text-stdBlue h-[40px] w-full md:w-[150px] max-w-[200px] rounded-full font-bold text-primaryFont bg-stdYellow mt-2'>
+                    <button type="submit" className='text-white h-[40px] w-full md:w-[150px] max-w-[200px] rounded-full font-bold text-primaryFont bg-stdYellow mt-2'>
                         Register
                     </button>
                 </form>
