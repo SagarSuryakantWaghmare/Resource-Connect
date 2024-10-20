@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProfileReview from "../components/ProfileReview";
-import ProfilePhoto from "../components/Assets/profileImage.jpg"
+import ProfileReview from "../components/ProfileReview.jsx";
+import ProfilePhoto from "../components/Assets/ProfileImage.jpg";
 
 
 export default function UserProfile(props) {
