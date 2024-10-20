@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaUserCircle } from 'react-icons/fa';
 
 export default function ServiceProviderProfile() {
     const { id } = useParams(); // Assuming the service provider ID is passed as a URL parameter
@@ -30,7 +29,7 @@ export default function ServiceProviderProfile() {
                 const response = await axios.get(`/api/v1/service-providers/get-reviews/${id}`);
                 if (response.status === 200) {
                     setReviews(response.data.data);
-                    console.log('Reviews:', response.data.data);
+                    // console.log('Reviews:', response.data.data);
                 } else {
                     throw new Error('Failed to fetch reviews');
                 }
@@ -75,7 +74,7 @@ export default function ServiceProviderProfile() {
         return async (e) => {
             e.preventDefault();
             const rating = e.target.rating.value;
-            console.log('Rating:', rating);
+            // console.log('Rating:', rating);
             const reviewDescription = e.target.reviewDescription.value;
             try {
                 const response = await axios.post(`/api/v1/service-providers/set-sp-review`, {
