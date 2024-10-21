@@ -6,7 +6,7 @@ import CompletedRequestBooking from '../components/CompletedRequestBooking'
 import PendingRequestBooking from '../components/PendingRequestBooking'
 
 export default function BookingPage() {
-  // State to manage the active button
+
   const [activeButton, setActiveButton] = useState('New')
 
   return (
