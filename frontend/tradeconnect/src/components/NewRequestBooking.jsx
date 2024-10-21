@@ -8,7 +8,7 @@ export default function NewRequestBooking(props) {
                 
                 <div className='flex justify-between'>
 
-                    <div className='flex flex-col  px-2 py-2 mt-2'>
+                    <div className='flex flex-col  px-2 py-2 '>
                         <div className='flex gap-20'>
                             <div className='flex gap-2 items-center'>
                                 <div className='h-[40px] w-[40px] rounded-full  bg-color1 flex justify-center items-center text-white font-semibold text-lg '>{props.icon}</div>
