@@ -1,0 +1,20 @@
+{
+    "name": "My Codespace Environment",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "eamodio.gitlens",
+                "esbenp.prettier-vscode",
+                "christian-kohler.path-intellisense",
+                "wayou.vscode-todo-highlight",
+                "azemoh.one-monokai",
+                "dbaeumer.vscode-eslint",
+                "formulahendry.auto-rename-tag",
+                "xabikos.JavaScriptSnippets",
+                "mongodb.mongodb-vscode",
+                "rangav.vscode-thunder-client"
+            ]
+        }
+    }
+}
