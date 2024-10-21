@@ -1,1 +1,0 @@
-export const DB_NAME = 'resource_connect'
