@@ -145,6 +145,86 @@ const getReviews = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, reviews, "Reviews fetched successfully"));
 })
 
+const getServiceProvidersByQuery = asyncHandler(async (req, res) => {
+    const { query } = req.query;
+    const { city } = req.query;
+    console.log('City', city);
+    console.log('Query', query);
+
+    const serviceProviders = await ServiceProvider.find(
+        {
+            $or: {
+                professions: { $regex: query, $options: 'i' },
+                location: { $regex: query, $options: 'i' },
+                availability: { $regex: query, $options: 'i' },
+                additionalDetails: { $regex: query, $options: 'i' },
+                badges: { $regex: query, $options: 'i' }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        }
+    )
+
+    console.log('Service Providers fetched successfully!', serviceProviders);
+
+    return res.status(200)
+        .json(new ApiResponse(
+            200,
+            serviceProviders,
+            "Service Providers fetched successfull"
+        ));
+})
+
 export {
     getServiceProviderByCity,
     getServiceProviderDetails,
@@ -153,4 +233,5 @@ export {
     registerSP,
     setReview,
     getReviews,
+    getServiceProvidersByQuery
 };
