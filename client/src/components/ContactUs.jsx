@@ -24,7 +24,7 @@ export default function ContactUs() {
                         </div>
                         <div className=''>
                         <p>+91-8856917094</p>
-                        <p className='mt-3'>tradeconnect@gmail.com</p>
+                        <p className='mt-3'>SewaSetu@gmail.com</p>
                         <p className='mt-4'>Deogiri college,Aurangabad</p>
 
                         </div>

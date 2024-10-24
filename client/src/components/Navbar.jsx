@@ -75,13 +75,7 @@ export default function Navbar() {
     <nav className='flex justify-between items-center h-[70px] border-b-2 px-5 w-full font-stdFont bg-white shadow-md'>
       <Link to={getHomeLink()}>
         <div className="flex ml-5" id='Logo'>
-          {/* <span className='text-[34px] font-bold mr-2 bg-Btn-color2 h-[40px] w-[110px] rounded-l-lg text-stdYellow pl-3'>
-            Trade
-          </span>
-          <span className='text-[34px] font-bold bg-Btn-color1 h-[40px] w-[90px] rounded-r-lg text-stdBlue'>
-            Connect
-          </span> */}
-          <img src={logo}  alt="" />
+          <img src={logo} alt="" style={{ width: '120px', height: '60px' }} />
         </div>
       </Link>
 

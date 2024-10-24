@@ -124,7 +124,7 @@ export default function HomePage() {
             <h2 className='font-bold text-4xl w-96'>We'll match you with personalized solutions</h2>
             <p className='m-4'>See your price and book services in an instant. <br /> Or, request and compare quotes from highly rated pros near you.</p>
             <img className='h-96' src={HomePagePhoto} alt="Work" />
-            <p className='w-[54rem] mt-16 mb-32 font-semibold text-lg'>TradeConnect is the go-to platform for tradespeople and customers looking for reliable services. Our team is dedicated to connecting you with skilled professionals in your area, ensuring top-notch quality and customer satisfaction. Join TradeConnect today and experience the difference!</p>
+            <p className='w-[54rem] mt-16 mb-32 font-semibold text-lg'>SewaSetu is the go-to platform for tradespeople and customers looking for reliable services. Our team is dedicated to connecting you with skilled professionals in your area, ensuring top-notch quality and customer satisfaction. Join SewaSetu today and experience the difference!</p>
           </div>
         </section>
 

@@ -6,7 +6,7 @@ export default function SignLog() {
     <>
       <div className='min-h-screen flex justify-center items-center font-stdFont bg-stdBg p-5'>
         <div className='bg-white  w-full max-w-[450px] rounded-2xl h-auto md:h-[280px] text-center pb-3'>
-          <div id="head" className='text-stdBlue font-bold text-[30px] md:text-[36px] mt-2'>TradeConnect</div>
+          <div id="head" className='text-stdBlue font-bold text-[30px] md:text-[36px] mt-2'>SewaSetu</div>
           <div id="inputBtn" className='flex flex-col gap-4 text-center items-center font-bold mt-5'>
             
             {/* Sign Up Button */}

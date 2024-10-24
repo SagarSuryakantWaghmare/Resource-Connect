@@ -20,7 +20,7 @@ export default function HomePage(props) {
             <h2 className="text-center text-[28px] lg:text-[36px] mt-2">
               with{' '}
               <span className="text-[38px] lg:text-[50px] text-color1">
-                TradeConnect
+                SewaSetu
               </span>
             </h2>
             <p className="text-center mt-2 text-[14px] lg:text-[16px]">
@@ -57,7 +57,7 @@ export default function HomePage(props) {
       {/* review page section */}
 
       <div className="flex flex-col items-center justify-center w-full py-12">
-        <h2 className="text-3xl font-bold mb-10">See what happy customers are saying about TradeConnect</h2>
+        <h2 className="text-3xl font-bold mb-10">See what happy customers are saying about SewaSetu</h2>
         <div className="flex flex-col w-full items-center ">
             <div className='flex gap-[4rem]'>
               < ReviewHome name="Sophie Carter" />

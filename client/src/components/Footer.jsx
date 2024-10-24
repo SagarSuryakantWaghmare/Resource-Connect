@@ -32,10 +32,10 @@ function Footer() {
               <div className="mt-3">
                 <div className="flex  gap-5 text-lg text-white font-semibold" >
                   <i class="fa-solid fa-envelope"></i>
-                  <h1> tradeconnect@gmail.com</h1>
+                  <h1> SewaSetu@gmail.com</h1>
                 </div>
                 <h1 className="text-lg text-white font-semibold"><i className="fa-solid fa-phone mr-3"></i> <span>+91 1800 130 200 </span></h1>
-                <h1 className="text-lg text-white font-semibold"><i className="fa-brands fa-youtube mr-3"></i><span>www.TradeConnect.youtube.com</span></h1>
+                <h1 className="text-lg text-white font-semibold"><i className="fa-brands fa-youtube mr-3"></i><span>www.SewaSetu.youtube.com</span></h1>
   
               </div>
   

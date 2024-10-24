@@ -18,7 +18,7 @@ export default function BookingPage() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}>
-        <h1 className='text-white mt-2 text-[32px] font-bold mb-2 '>Grow your business with TradeConnect</h1>
+        <h1 className='text-white mt-2 text-[32px] font-bold mb-2 '>Grow your business with SewaSetu</h1>
         <h2 className='text-white text-[28px]  font-semibold '>"Connect with local customers and </h2>
         <h2 className='text-white text-[28px] font-semibold  mb-10'>expand your service offerings"</h2>
         <h1 className='font-bold text-color3  text-3xl '>Welcome, Sagar Waghmare! Here’s what’s happening today</h1>
