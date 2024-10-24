@@ -1,52 +1,59 @@
-import React from 'react'
+import React from 'react';
+import logo from '../components/Assets/logo.png';
 
 function Footer() {
     return (
-      <>
-        <div className="h-[250px] w-full pt-5  bg-gray-700 mt-10 ">
-          <div className=" flex justify-around">
-            <div className="h-[200px] w-[200px] rounded-2xl bg-black  ">
-              <div className="h-[150px] text-white font-bold text-4xl flex flex-col justify-center items-center text-center">
-                <h1>Trade</h1>
-                <h1>Connect</h1>
-  
-              </div>
-              <div className="h-[50px] bg-white rounded-b-2xl flex justify-center  text-center items-center ">
-                <h1 className="text-color1 ml-2 font-bold">Connecting Skills with Opportunities.</h1>
-  
-              </div>
-  
-  
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-white ">Quick Links</h1>
-              <div className="flex justify-center flex-col  text-lg text-white font-semibold ">
-                <h1 className="mt-2">Home</h1>
-                <h1>About us</h1>
-                <h1>Services</h1>
-                <h1>Login</h1>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <h1 className="text-2xl font-bold text-white text-center">Contact us</h1>
-              <div className="mt-3">
-                <div className="flex  gap-5 text-lg text-white font-semibold" >
-                  <i class="fa-solid fa-envelope"></i>
-                  <h1> SewaSetu@gmail.com</h1>
+        <>
+        <div className="w-full bg-gray-800 py-10 mt-10 shadow-lg">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-5">
+                
+                {/* Logo Section */}
+                <div className="flex flex-col items-center md:items-start">
+                    <img src={logo} alt="Logo" className="rounded-t-xl mb-4" style={{ width: '200px', height: '100px' }} />
+                    <p className="text-gray-400 text-sm">Connecting people with services seamlessly.</p>
                 </div>
-                <h1 className="text-lg text-white font-semibold"><i className="fa-solid fa-phone mr-3"></i> <span>+91 1800 130 200 </span></h1>
-                <h1 className="text-lg text-white font-semibold"><i className="fa-brands fa-youtube mr-3"></i><span>www.SewaSetu.youtube.com</span></h1>
-  
-              </div>
-  
+                
+                {/* Quick Links Section */}
+                <div className="flex flex-col items-center md:items-start">
+                    <h1 className="text-2xl font-bold text-white mb-4">Quick Links</h1>
+                    <ul className="text-lg text-white font-semibold space-y-2">
+                        <li className="hover:text-gray-300 cursor-pointer">Home</li>
+                        <li className="hover:text-gray-300 cursor-pointer">About Us</li>
+                        <li className="hover:text-gray-300 cursor-pointer">Services</li>
+                        <li className="hover:text-gray-300 cursor-pointer">Login</li>
+                    </ul>
+                </div>
+                
+                {/* Contact Us Section */}
+                <div className="flex flex-col items-center md:items-start">
+                    <h1 className="text-2xl font-bold text-white mb-4">Contact Us</h1>
+                    <div className="space-y-4">
+                        <div className="flex items-center text-lg text-white font-semibold">
+                            <i className="fa-solid fa-envelope mr-3"></i>
+                            <span>SewaSetu@gmail.com</span>
+                        </div>
+                        <div className="flex items-center text-lg text-white font-semibold">
+                            <i className="fa-solid fa-phone mr-3"></i>
+                            <span>+91 1800 130 200</span>
+                        </div>
+                        <div className="flex items-center text-lg text-white font-semibold">
+                            <i className="fa-brands fa-youtube mr-3"></i>
+                            <span>www.SewaSetu.youtube.com</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-  
-          </div>
-  
+
+            {/* Footer Bottom Section */}
+            <div className="mt-10 border-t border-gray-600 pt-4">
+                <p className="text-center text-gray-400 text-sm">
+                    © 2024 SewaSetu. All Rights Reserved.
+                </p>
+            </div>
         </div>
-  
-      </>
-    )
-  }
-  
-  export default Footer
+        </>
+    );
+}
+
+export default Footer;
